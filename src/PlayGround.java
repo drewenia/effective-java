@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Supplier;
 
 public class PlayGround {
     public static void main(String[] args) {
@@ -8,12 +9,7 @@ public class PlayGround {
     }
 }
 
-// Noninstantiable utility class
-class UtilityClass{
 
-    // Suppress default constructor for noninstantiability
-    private UtilityClass(){
-        throw new AssertionError();
-    }
-    // Remainder omitted
+Mosaic create(Supplier<? extends Tile> tileFactory){
+
 }
