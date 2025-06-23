@@ -13,3 +13,6 @@
 [Item 4](Chapter_2/Item4.md) (Enforce noninstantiability with a private constructor)
 
 [Item 5](Chapter_2/Item5.md) (Prefer dependency injection to hardwiring resources)
+
+[Item 6](Chapter_2/Item6.md) (Avoid creating unnecessary objects)
+
