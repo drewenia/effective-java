@@ -7,3 +7,5 @@
 [Item 1](Chapter_2/Item1.md) (Consider static factory methods instead of constructors)
 
 [Item 2](Chapter_2/Item2.md) (Consider a builder when faced with many constructor parameters)
+
+[Item 3](Chapter_2/Item3.md) (Enforce the singleton property with a private constructor or an enum type)
