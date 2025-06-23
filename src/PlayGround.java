@@ -4,15 +4,16 @@ import java.util.*;
 
 public class PlayGround {
     public static void main(String[] args) {
-        Elvis elvis = Elvis.INSTANCE;
-        elvis.leaveTheBuilding();
+
     }
 }
 
-enum Elvis {
-    INSTANCE;
+// Noninstantiable utility class
+class UtilityClass{
 
-    public void leaveTheBuilding(){
-        System.out.println("Im outta here!");
+    // Suppress default constructor for noninstantiability
+    private UtilityClass(){
+        throw new AssertionError();
     }
+    // Remainder omitted
 }
