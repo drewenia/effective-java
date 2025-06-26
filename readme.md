@@ -16,3 +16,4 @@
 
 [Item 6](Chapter_2/Item6.md) (Avoid creating unnecessary objects)
 
+[Item 7](Chapter_2/Item7.md) (Eliminate obsolete object references)
