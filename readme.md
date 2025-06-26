@@ -33,3 +33,5 @@
     * LinkedHashMap removeEldestEntry() Method Explanation
 
     * Guava Cache Explanation
+
+[Item 8](Chapter_2/Item8.md) (Avoid finalizers and cleaners)

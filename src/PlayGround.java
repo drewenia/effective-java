@@ -1,40 +1,55 @@
-import com.google.common.cache.*;
-
-import java.util.concurrent.ConcurrentMap;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.lang.ref.Cleaner;
 
 public class PlayGround {
-    public static void main(String[] args) throws InterruptedException {
-        CacheLoader<String, String> loader = new CacheLoader<String, String>() {
-            @Override
-            public String load(String key) throws Exception {
-                return key.toUpperCase();
-            }
-        };
+    public static void main(String[] args) throws Exception {
+        try(Room myRoom = new Room(7)){
+            System.out.println("Goodbye");
+        }
+    }
+}
 
-        RemovalListener<String, String> listener = notification -> {
-            if (notification.wasEvicted()) {
-                String cause = notification.getCause().name();
-                assertEquals(RemovalCause.SIZE.toString(), cause);
-                System.out.println(cause); // => SIZE
-            }
-        };
+// Cleaner’ı safety net olarak kullanan bir AutoCloseable sınıfı
+class Room implements AutoCloseable{
+    private static final Cleaner cleaner = Cleaner.create();
 
-        LoadingCache<String,String> cache = CacheBuilder.newBuilder()
-                .maximumSize(3)
-                .removalListener(listener)
-                .build(loader);
+    // Temizlenmesi gereken resource. Room’a referans vermemeli!
+    private static class State implements Runnable{
+        int numJunkPiles; // Bu odadaki atık yığınlarının sayısı
 
-        cache.getUnchecked("first");
-        cache.getUnchecked("second");
-        cache.getUnchecked("third");
-        cache.getUnchecked("last");
+        public State(int numJunkPiles){
+            this.numJunkPiles = numJunkPiles;
+        }
 
-        ConcurrentMap<String, String> map = cache.asMap();
-        System.out.println(map); // => {second=SECOND, third=THIRD, last=LAST}
+        // close metodu veya cleaner tarafından invoke edilir
+        @Override
+        public void run() {
+            System.out.println("Cleaning room");
+            numJunkPiles = 0;
+        }
+    }
 
-        assertEquals(3, cache.size());
+    // Bu room'un state'i, cleanable ile paylaşılan
+    private final State state;
+
+    // Bizim cleanable’ımız. Room GC’ye uygun olduğunda temizler.
+    private final Cleaner.Cleanable cleanable;
+
+    public Room(int numJunkPiles){
+        state = new State(numJunkPiles);
+        cleanable = cleaner.register(this,state);
+    }
+
+    @Override
+    public void close() throws Exception {
+        cleanable.clean();
+    }
+}
+
+class Adult{
+    public static void main(String[] args) {
+        try(Room myRoom = new Room(7)){
+            System.out.println("Goodbye");
+        }
     }
 }
 
