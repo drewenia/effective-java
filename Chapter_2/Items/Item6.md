@@ -34,7 +34,7 @@ sequence'ler ile temsil edilebilir — `U+0000` ile `U+FFFF` aralığındaki cha
 `U+010000` ile `U+10FFFF` aralığındaki character'lar için ise `UTF-16 surrogate code unit`'lerine karşılık gelen iki
 adet escape sequence kullanılır.
 
-![img_2.png](img_2.png)
+![img_2.png](../assets/img_2.png)
 
 Bir string literal daima `String` type’indadır. Openin `"` karakterinden sonra ve closing'de ki eşleşen `(matching)` `"`
 karakterinden önce bir satır sonlandırıcı `(line terminator)` bulunması compile time hatasıdır. Belirtildiği üzere,
@@ -42,7 +42,7 @@ karakterler `CR (Carriage Return)` ve `LF (Line Feed)` hiçbir zaman bir `InputC
 bir `LineTerminator` (satır sonlandırıcı) olarak tanınır. Uzun bir string literal her zaman daha kısa parçalara
 bölünebilir ve string concatenation operatörü `+` kullanılarak (gerekirse parantezli) bir ifade şeklinde yazılabilir.
 
-![img_3.png](img_3.png)
+![img_3.png](../assets/img_3.png)
 
 Unicode escape’leri çok erken bir aşamada process edildiği için, sadece bir satırsonu karakteri `(LF)` içeren bir string
 literal yazmak amacıyla `"\u000a"` yazmak doğru değildir; çünkü `\u000a` Unicode escape’i çeviri adımı 1’de gerçek bir
@@ -153,19 +153,19 @@ bir state'i olmadığından, belirli bir object için birden fazla adapter insta
 Diyelim ki, mevcut bir yazılım sisteminiz var ve içine yeni bir tedarikçi `(vendor)` class library'si entegre etmeniz
 gerekiyor, ancak yeni vendor interface'lerini önceki vendor'dan farklı tasarlamış:
 
-![img_4.png](img_4.png)
+![img_4.png](../assets/img_4.png)
 
 Interface'leri, kodunuzu yazdığınız interface'ler ile uyuşmuyor. Bu şekilde çalışmaz. Tamam, mevcut kodunu değiştirerek
 sorunu çözmek istemiyorsun (ve vendor'un kodunu da değiştiremezsin). Peki ne yaparsın? Yeni vendor interface'ini, senin
 beklediğin interface'e `adapt` eden bir sınıf yazabilirsin.
 
-![img_5.png](img_5.png)
+![img_5.png](../assets/img_5.png)
 
 Adapter, senin sınıflarının beklediği interface'i implement eder. Aynı zamanda, request'lerinize hizmet etmek için
 vendor interface'i ile iletişim kurar. Adapter, client'dan gelen request'leri alır ve bunları vendor class'larının
 anlayacağı request'ler haline dönüştürerek `middleman` görevini üstlenir.
 
-![img_6.png](img_6.png)
+![img_6.png](../assets/img_6.png)
 
 Bir Duck interface'i düşünelim;
 
@@ -308,7 +308,7 @@ biliyoruz. Bu, client’ı implement edilen interface’ten decouple eder ve int
 adapter bu değişikliği encapsulate ederek client’ın her seferinde farklı bir interface ile çalışmak için
 değiştirilmesini gereksiz kılar. Pattern’in runtime behavior'unu inceledik; şimdi de class diyagramına bakalım:
 
-![img_7.png](img_7.png)
+![img_7.png](../assets/img_7.png)
 
 > End of explanation
 

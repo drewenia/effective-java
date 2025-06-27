@@ -99,7 +99,7 @@ https://www.baeldung.com/java-enumset
 EnumSet, enum class’larla çalışmak için specialized bir Set collection’dır. Set interface’ini implement eder ve
 `AbstractSet`’ten extend eder.
 
-![img.png](img.png)
+![img.png](../assets/img.png)
 
 `AbstractSet` ve `AbstractCollection`, `Set` ve `Collection` interface’lerindeki neredeyse tüm method’lar için
 implementation sağlasa da, `EnumSet` bunların çoğunu override eder.
@@ -192,7 +192,7 @@ Enum elementlerinin bir subset'i EnumSet oluşturmak istersek, overload edilmiş
 Sabit sayıda parametre alan (en fazla 5 farklı parametre) method’larla `varargs` kullanan method arasında ayrım yapmak
 önemlidir:
 
-![img_1.png](img_1.png)
+![img_1.png](../assets/img_1.png)
 
 Javadoc, varargs versiyonunun performansının, array'in oluşturulması nedeniyle diğerlerinden daha yavaş olabileceğini
 belirtir. Bu yüzden, sadece başlangıçta 5’ten fazla element eklememiz gerektiğinde kullanılmalıdır.
