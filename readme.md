@@ -37,3 +37,5 @@
 [Item 8](Chapter_2/Items/Item8.md) (Avoid finalizers and cleaners)
 
 [Item 9](Chapter_2/Items/Item9.md) (Prefer try-with-resources to try-finally)
+
+### [Chapter 3 - Methods Common to All Objects](Chapter_3/MethodsCommonToAllObjects.md)
