@@ -39,3 +39,21 @@
 [Item 9](Chapter_2/Items/Item9.md) (Prefer try-with-resources to try-finally)
 
 ### [Chapter 3 - Methods Common to All Objects](Chapter_3/MethodsCommonToAllObjects.md)
+
+[Item 10](Chapter_3/Item10.md) (Obey the general contract when overriding equals)
+
+    * Value based classes Explanation
+
+    * What Is a Monitor in Computer Science?
+
+        * Guide to the Synchronized Keyword in Java
+
+        * wait() and notify() methods in Java
+
+    * [JLS, 15.20.2] Type Comparison Operator instanceof
+
+    * [JLS 15.21.1] Numerical Equality Operators == and !=
+
+    * Float.equals method examples
+
+    * Google AutoValue

@@ -11,5 +11,7 @@
     <orderEntry type="library" name="jayway.awaitility" level="project" />
     <orderEntry type="library" name="junit.jupiter.api" level="project" />
     <orderEntry type="library" name="google.guava" level="project" />
+    <orderEntry type="library" name="google.auto.value" level="project" />
+    <orderEntry type="library" name="google.auto.value.annotations" level="project" />
   </component>
 </module>
