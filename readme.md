@@ -59,3 +59,5 @@
     * Google AutoValue
 
 [Item 11](Chapter_3/Item11.md) (Always override hashCode when you override equals)
+
+[Item 12](Chapter_3/Item12.md) (Always override toString)
