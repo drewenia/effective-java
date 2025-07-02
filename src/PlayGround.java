@@ -4,31 +4,14 @@ import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class PlayGround {
     public static void main(String[] args) {
-
-        Funnel<PhoneNumber> funnel = new Funnel<PhoneNumber>() {
-            @Override
-            public void funnel(PhoneNumber phoneNumber, PrimitiveSink into) {
-                into
-                        .putShort(phoneNumber.getAreaCode())
-                        .putShort(phoneNumber.getPrefix())
-                        .putShort(phoneNumber.getLineNum());
-            }
-        };
-
-        Map<PhoneNumber, String> map = new HashMap<>();
-        map.put(new PhoneNumber((short) 707, (short) 867, (short) 5309), "Jenny");
-        String s = map.get(new PhoneNumber((short) 707, (short) 867, (short) 5309));
-        System.out.println(s);
     }
 }
 
-final class PhoneNumber {
+final class PhoneNumber implements Cloneable{
     private final short areaCode, prefix, lineNum;
 
     public PhoneNumber(short areaCode, short prefix, short lineNum) {
@@ -86,5 +69,50 @@ final class PhoneNumber {
     @Override
     public String toString() {
         return String.format("%03d-%03d-%04d", areaCode, prefix, lineNum);
+    }
+
+    @Override
+    protected PhoneNumber clone() throws CloneNotSupportedException {
+        return (PhoneNumber) super.clone();
+    }
+}
+
+class Stack{
+    private Object[] elements;
+    private int size = 0;
+    private static final int DEFAULT_INITIAL_CAPACITY = 16;
+
+    public Stack(){
+        this.elements = new Object[DEFAULT_INITIAL_CAPACITY];
+    }
+
+    public void push(Object e){
+        ensureCapacity();
+        elements[size++] = e;
+    }
+
+    public Object pop(){
+        if (size == 0)
+            throw new EmptyStackException();
+        Object result = elements[--size];
+        elements[size] = null; // Eliminate obsolete reference
+        return result;
+    }
+
+    // Ensure space for at least one more element.
+    private void ensureCapacity() {
+        if (elements.length == size)
+            elements = Arrays.copyOf(elements, 2 * size + 1);
+    }
+
+    @Override
+    public Stack clone(){
+        try{
+            Stack result = (Stack) super.clone();
+            result.elements = elements.clone();
+            return result;
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
