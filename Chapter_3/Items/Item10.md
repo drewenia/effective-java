@@ -475,7 +475,7 @@ Yani, bu benzetmede:
 
 * Thread’ler, exclusive room’a girmek isteyen kişilerdir.
 
-![img.png](img.png)
+![img.png](../assets/img.png)
 
 Kişi exclusive room’a girmek istediğinde, önce bir scheduler beklediği hallway'e (entry set) gider. Bu nedenle,
 scheduler kişiyi seçer ve onu exclusive room’a gönderir. JVM’lerdeki Scheduler'lar priority-based bir scheduling
@@ -520,7 +520,7 @@ Bunu göz önünde bulundurarak, aşağıdakileri kullanacağız:
 
 Bunu, bir Thread’in lifecycle'ını gösteren aşağıdaki diyagramdan daha iyi anlayabiliriz:
 
-![img_1.png](img_1.png)
+![img_1.png](../assets/img_1.png)
 
 * `The wait() Method` - Basitçe söylemek gerekirse, `wait()` calling mevcut thread’i, başka bir thread aynı object
   üzerinde `notify()` veya `notifyAll()` invoke edinceye kadar beklemeye zorlar. Bunun için current thread’in object'in

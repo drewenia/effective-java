@@ -40,7 +40,7 @@
 
 ### [Chapter 3 - Methods Common to All Objects](Chapter_3/MethodsCommonToAllObjects.md)
 
-[Item 10](Chapter_3/Item10.md) (Obey the general contract when overriding equals)
+[Item 10](Chapter_3/Items/Item10.md) (Obey the general contract when overriding equals)
 
     * Value based classes Explanation
 
@@ -58,10 +58,14 @@
 
     * Google AutoValue
 
-[Item 11](Chapter_3/Item11.md) (Always override hashCode when you override equals)
+[Item 11](Chapter_3/Items/Item11.md) (Always override hashCode when you override equals)
 
-[Item 12](Chapter_3/Item12.md) (Always override toString)
+[Item 12](Chapter_3/Items/Item12.md) (Always override toString)
 
-[Item 13](Chapter_3/Item13.md) (Override clone judiciously)
+[Item 13](Chapter_3/Items/Item13.md) (Override clone judiciously)
 
-[Item 14](Chapter_3/Item14.md) (Consider implementing Comparable)
+[Item 14](Chapter_3/Items/Item14.md) (Consider implementing Comparable)
+
+### [Chapter 4 - Classes and Interfaces](Chapter_4/ClassesAndInterfaces.md)
+
+[Item 15](Chapter_4/Item15.md) (Minimize the accessibility of classes and members)
