@@ -63,3 +63,5 @@
 [Item 12](Chapter_3/Item12.md) (Always override toString)
 
 [Item 13](Chapter_3/Item13.md) (Override clone judiciously)
+
+[Item 14](Chapter_3/Item14.md) (Consider implementing Comparable)
