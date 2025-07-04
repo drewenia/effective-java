@@ -69,3 +69,5 @@
 ### [Chapter 4 - Classes and Interfaces](Chapter_4/ClassesAndInterfaces.md)
 
 [Item 15](Chapter_4/Item15.md) (Minimize the accessibility of classes and members)
+
+[Item 16](Chapter_4/Item16.md) (In public classes, use accessor methods, not public fields)
