@@ -71,3 +71,7 @@
 [Item 15](Chapter_4/Item15.md) (Minimize the accessibility of classes and members)
 
 [Item 16](Chapter_4/Item16.md) (In public classes, use accessor methods, not public fields)
+
+[Item 17](Chapter_4/Item17.md) (Minimize mutability)
+
+    * [JLS 17.5] final Field Semantics
