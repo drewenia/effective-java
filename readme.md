@@ -75,3 +75,7 @@
 [Item 17](Chapter_4/Item17.md) (Minimize mutability)
 
     * [JLS 17.5] final Field Semantics
+
+[Item 18](Chapter_4/Item18.md) (Favor composition over inheritance)
+
+    * Guava Forwarding Class

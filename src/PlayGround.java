@@ -1,18 +1,29 @@
-import autovalue.shaded.com.google.common.hash.Funnel;
-import autovalue.shaded.com.google.common.hash.PrimitiveSink;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.ForwardingList;
+import org.jspecify.annotations.Nullable;
 
-import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class PlayGround {
     public static void main(String[] args) {
 
     }
 
-    public static BigInteger safeInstance(BigInteger val){
-        return val.getClass() == BigInteger.class ? val : new BigInteger(val.toByteArray());
+    public static Iterator<String> skipNulls(final Iterator<String> in) {
+        return new AbstractIterator<String>() {
+            @Override
+            protected @Nullable String computeNext() {
+                while (in.hasNext()) {
+                    String s = in.next();
+                    if (s != null) {
+                        return s;
+                    }
+                }
+                return endOfData();
+            }
+        };
     }
 }
