@@ -79,3 +79,6 @@
 [Item 18](Chapter_4/Item18.md) (Favor composition over inheritance)
 
     * Guava Forwarding Class
+
+[Item 19](Chapter_4/Item19.md) (Design and document for inheritance or else prohibit it)
+
