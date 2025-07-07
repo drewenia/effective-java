@@ -92,3 +92,10 @@
 
     * AbstractMap.SimpleImmutableEntry Explanation
 
+[Item 21](Chapter_4/Item21.md) (Design interfaces for posterity)
+
+    * Java Collections.synchronizedCollection
+
+    * CopyOnWriteArrayList API
+
+
