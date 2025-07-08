@@ -102,3 +102,5 @@
 
 [Item 23](Chapter_4/Item23.md) (Prefer class hierarchies to tagged classes)
 
+[Item 24](Chapter_4/Item24.md) (Favor static member classes over nonstatic)
+
