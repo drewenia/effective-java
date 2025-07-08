@@ -68,21 +68,21 @@
 
 ### [Chapter 4 - Classes and Interfaces](Chapter_4/ClassesAndInterfaces.md)
 
-[Item 15](Chapter_4/Item15.md) (Minimize the accessibility of classes and members)
+[Item 15](Chapter_4/Items/Item15.md) (Minimize the accessibility of classes and members)
 
-[Item 16](Chapter_4/Item16.md) (In public classes, use accessor methods, not public fields)
+[Item 16](Chapter_4/Items/Item16.md) (In public classes, use accessor methods, not public fields)
 
-[Item 17](Chapter_4/Item17.md) (Minimize mutability)
+[Item 17](Chapter_4/Items/Item17.md) (Minimize mutability)
 
     * [JLS 17.5] final Field Semantics
 
-[Item 18](Chapter_4/Item18.md) (Favor composition over inheritance)
+[Item 18](Chapter_4/Items/Item18.md) (Favor composition over inheritance)
 
     * Guava Forwarding Class
 
-[Item 19](Chapter_4/Item19.md) (Design and document for inheritance or else prohibit it)
+[Item 19](Chapter_4/Items/Item19.md) (Design and document for inheritance or else prohibit it)
 
-[Item 20](Chapter_4/Item20.md) (Prefer interfaces to abstract classes)
+[Item 20](Chapter_4/Items/Item20.md) (Prefer interfaces to abstract classes)
 
     * [JLS 9.4.3] Interface Method Body
 
@@ -92,15 +92,17 @@
 
     * AbstractMap.SimpleImmutableEntry Explanation
 
-[Item 21](Chapter_4/Item21.md) (Design interfaces for posterity)
+[Item 21](Chapter_4/Items/Item21.md) (Design interfaces for posterity)
 
     * Java Collections.synchronizedCollection
 
     * CopyOnWriteArrayList API
 
-[Item 22](Chapter_4/Item22.md) (Use interfaces only to define types)
+[Item 22](Chapter_4/Items/Item22.md) (Use interfaces only to define types)
 
-[Item 23](Chapter_4/Item23.md) (Prefer class hierarchies to tagged classes)
+[Item 23](Chapter_4/Items/Item23.md) (Prefer class hierarchies to tagged classes)
 
-[Item 24](Chapter_4/Item24.md) (Favor static member classes over nonstatic)
+[Item 24](Chapter_4/Items/Item24.md) (Favor static member classes over nonstatic)
+
+[Item 25](Chapter_4/Items/Item25.md) (Limit source files to a single top-level class)
 

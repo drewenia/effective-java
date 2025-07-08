@@ -342,7 +342,7 @@ Special view'ler sağlayan interface'ler bazen bu view'lerin Standard implementa
 ForwardingMap, StandardKeySet, StandardValues ve StandardEntrySet sınıflarını sağlar; bunların her biri, method'larını
 mümkün olduğunda decorated map'e delegate eder veya aksi takdirde, delegate edilemeyen method'ları abstract bırakır.
 
-![img.png](img.png)
+![img.png](../assets/img.png)
 
 ### PeekingIterator
 
