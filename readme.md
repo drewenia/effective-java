@@ -106,3 +106,5 @@
 
 [Item 25](Chapter_4/Items/Item25.md) (Limit source files to a single top-level class)
 
+### [Chapter 5 - Generics](Chapter_5/Generics.md)
+
