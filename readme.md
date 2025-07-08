@@ -98,4 +98,5 @@
 
     * CopyOnWriteArrayList API
 
+[Item 22](Chapter_4/Item22.md) (Use interfaces only to define types)
 
