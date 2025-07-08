@@ -100,3 +100,5 @@
 
 [Item 22](Chapter_4/Item22.md) (Use interfaces only to define types)
 
+[Item 23](Chapter_4/Item23.md) (Prefer class hierarchies to tagged classes)
+
