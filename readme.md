@@ -109,3 +109,5 @@
 ### [Chapter 5 - Generics](Chapter_5/Generics.md)
 
 [Item 26](Chapter_5/Items/Item26.md) (Don’t use raw types)
+
+[Item 27](Chapter_5/Items/Item27.md) (Eliminate unchecked warnings)
