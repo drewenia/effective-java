@@ -115,3 +115,7 @@
 [Item 28](Chapter_5/Items/Item28.md) (Prefer lists to arrays)
 
 [Item 29](Chapter_5/Items/Item29.md) (Favor generic types)
+
+[Item 30](Chapter_5/Items/Item30.md) (Favor generic methods)
+
+    * Type erasure in java explained
