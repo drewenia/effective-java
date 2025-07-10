@@ -113,3 +113,5 @@
 [Item 27](Chapter_5/Items/Item27.md) (Eliminate unchecked warnings)
 
 [Item 28](Chapter_5/Items/Item28.md) (Prefer lists to arrays)
+
+[Item 29](Chapter_5/Items/Item29.md) (Favor generic types)
