@@ -119,3 +119,7 @@
 [Item 30](Chapter_5/Items/Item30.md) (Favor generic methods)
 
     * Type erasure in java explained
+
+[Item 31](Chapter_5/Items/Item31.md) (Use bounded wildcards to increase API flexibility)
+
+    * Get and Put principle

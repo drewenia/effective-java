@@ -1,9 +1,8 @@
-import java.util.Arrays;
-import java.util.EmptyStackException;
+import java.util.*;
 
-// Stack'i generic hale getirmek için yapılan ilk deneme - compile edilmeyecek!
+// Wildcard types kullanan bulk method'lara sahip generic stack
 public class Stack<E> {
-    private Object[] elements;
+    private E[] elements;
     private int size = 0;
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
 
@@ -21,13 +20,10 @@ public class Stack<E> {
         elements[size++] = e;
     }
 
-    // Unchecked warning'in uygun şekilde suppress edilmesi
     public E pop() {
         if (size == 0) throw new EmptyStackException();
 
-        // push, elements'in type'ının E olmasını gerektirir, bu yüzden cast doğrudur.
-        @SuppressWarnings("unchecked")
-        E result = (E) elements[--size];
+        E result = elements[--size];
         elements[size] = null; // Eski referansı eliminate et
         return result;
     }
@@ -39,5 +35,30 @@ public class Stack<E> {
     private void ensureCapacity() {
         if (elements.length == size)
             elements = Arrays.copyOf(elements, 2 * size + 1);
+    }
+
+    // E producer olarak görev yapan bir parameter için wildcard type
+    public void pushAll(Iterable<? extends E> src) {
+        for (E e : src) {
+            push(e);
+        }
+    }
+
+
+    // E consumer olarak görev yapan parameter için wildcard type
+    public void popAll(Collection<? super E> dst) {
+        while (!isEmpty()) {
+            dst.add(pop());
+        }
+    }
+
+    public static void main(String[] args) {
+        Stack<Number> numberStack = new Stack<>();
+        Iterable<Integer> integers = Arrays.asList(3, 1, 4, 1, 5, 9);
+        numberStack.pushAll(integers);
+
+        Collection<Object> objects = new ArrayList<>();
+        numberStack.popAll(objects);
+        System.out.println(objects); // => [9, 5, 1, 4, 1, 3]
     }
 }
