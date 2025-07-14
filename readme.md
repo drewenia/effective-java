@@ -123,3 +123,5 @@
 [Item 31](Chapter_5/Items/Item31.md) (Use bounded wildcards to increase API flexibility)
 
     * Get and Put principle
+
+[Item 32](Chapter_5/Items/Item32.md) (Combine generics and varargs judiciously)
