@@ -125,3 +125,7 @@
     * Get and Put principle
 
 [Item 32](Chapter_5/Items/Item32.md) (Combine generics and varargs judiciously)
+
+[Item 33](Chapter_5/Items/Item33.md) (Consider typesafe heterogeneous containers)
+
+    * Type Token
