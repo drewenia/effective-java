@@ -183,6 +183,11 @@ where CAP#1 is a fresh type-variable:
 CAP#1 extends Object from capture of ?
 ```
 
+```
+List<?> strings = new ArrayList<>();
+strings.add("Test"); // => COMPILER ERROR
+```
+
 Kabul etmek gerekir ki bu hata mesajı pek tatmin edici değildir, ancak compiler görevini yerine getirmiştir; element
 türü ne olursa olsun, collection'ın type değişmezlerinin `(invariant)` bozulmasını engellemiştir. `Collection<?>`
 içine (null dışında) herhangi bir element koyamayacağınız gibi, içinden aldığınız object'lerin türü hakkında da herhangi
