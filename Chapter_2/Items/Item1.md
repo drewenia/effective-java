@@ -3,9 +3,9 @@
 ## Item 1 : Constructor'lar yerine static factory method'ları göz önünde bulundurun.
 
 Bir sınıfın bir client'in bir instance almasını sağlamasının traditional yolu, `public constructor` sağlamaktır. Her
-programcının araç setinde bulunması gereken başka bir teknik daha var. Bir sınıf, sınıfın bir instance'i döndüren basit
-bir `public static factory method` sağlayabilir. Boolean'dan (boolean için boxed primitive sınıf) basit bir örnek: Bu
-method bir boolean primitive değerini bir Boolean object reference'ına çevirir:
+programcının araç setinde bulunması gereken başka bir teknik daha var. Bir sınıf, sınıfın bir instance'ını döndüren
+basit bir `public static factory method` sağlayabilir. Boolean'dan (boolean için boxed primitive sınıf) basit bir örnek:
+Bu method bir `boolean primitive` değerini bir `Boolean object` reference'ına çevirir:
 
 ```
 public static Boolean valueOf(boolean b){
@@ -59,8 +59,8 @@ Java 8’den önce, interface’lerin static method’ları olamazdı. Gelenek o
 factory method’lar, Types adında `noninstantiable` bir yardımcı sınıfa konurdu. Örneğin, Java Collections Framework,
 interface’lerinin kırk beş utility implementasyonuna sahiptir; bunlar arasında `unmodifiable collection`'lar,
 `synchronized collection`'lar ve benzerleri bulunur. Bu implementasyonların neredeyse tamamı, örneklenemez
-`(noninstantiable)` bir sınıf olan `java.util.Collections` içindeki static factory method'lar aracılığıyla dışa
-aktarılır. Döndürülen object'lerin class'ları ise tamamen `nonpublic`’tir.
+`(noninstantiable)` bir sınıf olan `java.util.Collections` içindeki static factory method'lar aracılığıyla export
+edilir. Döndürülen object'lerin class'ları ise tamamen `nonpublic`’tir.
 
 Collections Framework API’si, her kolaylaştırıcı implementasyon (convenience implementation) için ayrı ayrı kırk beş
 public class exported olacağından çok daha küçüktür. Yalnızca API'in boyutu değil, aynı zamanda kavramsal yük de
@@ -77,7 +77,7 @@ tüm static member'ları public olmak zorundadır. Java 9 private static method'
 static member class'lar hala public olmak zorundadır.
 
 Static factory'lerin dördüncü avantajı, döndürülen object'in class'ının, input parametrelerine bağlı olarak her call'da
-değişebilmesidir. Döndürülen object'in class'ı, deklare edilen return type'ın herhangi bir subtype'ı olabilir. Ayrıca,
+değişebilmesidir. Döndürülen object'in class'ı, declare edilen return type'ın herhangi bir subtype'ı olabilir. Ayrıca,
 döndürülen object'in class'ı sürümden sürüme de değişebilir.
 
 EnumSet class’ının hiçbir public constructor’ı yoktur, yalnızca static factory’leri vardır. OpenJDK implementasyonunda,
@@ -149,7 +149,7 @@ Unutmayın ki, burada sadece enum class’ın büyüklüğü dikkate alınır, c
 ### EnumSet Kullanmanın Avantajları;
 
 Yukarıda açıkladığımız EnumSet implementation’ı nedeniyle, EnumSet’teki tüm method’lar aritmetik bitwise operation’lar
-kullanılarak implement edilmiştir. Bu hesaplamalar çok hızlıdır ve bu nedenle tüm basic operation'lar sabit zamanda
+kullanılarak implement edilmiştir. Bu hesaplamalar çok hızlıdır ve bu nedenle tüm basic operation'lar constant time'da
 gerçekleştirilir.
 
 EnumSet’i HashSet gibi diğer Set implementation’larıyla karşılaştırırsak, EnumSet genellikle daha hızlıdır çünkü
@@ -277,10 +277,10 @@ System.out.println(colors); // => [YELLOW, BLACK, WHITE]
 > Ending Magazine
 
 Static factory’lerin beşinci avantajı, method’u içeren class yazıldığı anda, döndürülen object'in class’ının henüz var
-olması gerekmediğidir. Bu tür esnek static factory method’ları, `Java Database Connectivity API (JDBC)` gibi service
-provider framework’lerinin temelini oluşturur. Bir service provider framework, provider’ların bir service implement
-ettiği ve sistemin bu implementation’ları client’lara sunduğu bir sistemdir; bu sayede client’lar implementation’lardan
-ayrıştırılmış `(decoupling)` olur.
+olmasını gerektirmemesidir. Bu tür esnek static factory method’ları, `Java Database Connectivity API (JDBC)` gibi
+service provider framework’lerinin temelini oluşturur. Bir service provider framework, provider’ların bir service
+implement ettiği ve sistemin bu implementation’ları client’lara sunduğu bir sistemdir; bu sayede client’lar
+implementation’lardan ayrıştırılmış `(decoupling)` olur.
 
 Bir service provider framework’ün üç temel component'i vardır:
 
@@ -297,9 +297,9 @@ factory’dir.
 
 Bir service provider framework’ün optional dördüncü component'i, service provider interface’dir; bu, service interface
 instance'ları üreten factory object'ini tanımlar. Bir service provider interface olmadığında, implementasyonlar
-reflektif olarak instantiate edilmek zorundadır. JDBC case'inde, Connection `service interface` rolünü oynar,
-DriverManager.registerDriver `provider registration API`’ıdır, DriverManager.getConnection `service access API`’sıdır ve
-Driver ise `service provider interface`’dir.
+reflective olarak instantiate edilmek zorundadır. JDBC case'inde, Connection `service interface` rolünü oynar,
+`DriverManager.registerDriver` provider registration API’ıdır, `DriverManager.getConnection` service access API’sıdır ve
+`Driver` ise service provider interface’dir.
 
 Service provider framework pattern’in birçok çeşidi vardır. Örneğin, service access API, provider’lar tarafından
 sağlanan interface'den daha zengin bir service interface’i client’lara döndürebilir. Bu, Bridge pattern’idir. Dependency
@@ -345,7 +345,7 @@ JDK 1.6’da, `java.util.spi` package'i SPI örnekleri sunar:
 Bir SPI implement ederken, bir service provider, tanımlanmış `(defined)` service type’ı implement eden veya extend eden
 bir ya da daha fazla concrete class içerir. Tek bir SPI spesifikasyonunun birden fazla provider’ı barındırabileceğini
 unutmamak önemlidir. Loose coupling’i teşvik etmek ve information hiding'i korumak için, provider class genellikle bir
-proxy olarak görev yapar ve provider’ın belirli istekleri karşılayıp karşılayamayacağını belirlemek için yeterli
+proxy olarak görev yapar ve provider’ın belirli request'leri karşılayıp karşılayamayacağını belirlemek için yeterli
 functionality içerir.
 
 SPI’nin gücünü göstermek için, pluggable logging implementation'larına izin veren modüler bir logging framework
@@ -392,7 +392,7 @@ public class FileLogger implements Logger {
 Eğer Maven ya da Gradle tarzı bir build tool kullanılmıyor ise IntelliJ'de root dizine `resources/META-INF/services`
 isimli klasör manual olarak create edilir ve dizin `resource` olarak set edilir.
 
-`META-INF/services/` dizininde `Logger adlı bir konfigürasyon dosyası oluştururuz. Bu dosya, service provider
+`META-INF/services/` dizininde `Logger` adlı bir konfigürasyon dosyası oluştururuz. Bu dosya, service provider
 implementation’larının fully qualified class name'lerini listeler:
 
 `com.example.ConsoleLogger` ve `com.example.FileLogger`. Bu konfigürasyon, ServiceLoader’ın runtime’da service
@@ -455,7 +455,7 @@ Hem ConsoleLogger hemde FileLogger sorunsuzca çalışır.
 
 Yalnızca static factory method’lar sağlanmasının temel kısıtlaması, public veya protected constructor’a sahip olmayan
 sınıfların subclass’larının oluşturulamamasıdır. Örneğin, Collections Framework’ündeki convenience implementation
-class’larının hiçbirini subclass etmek mümkün değildir. Bu, gizli bir nimet olarak görülebilir; çünkü programcıları
+class’larının hiçbirini subclassed mümkün değildir. Bu, gizli bir nimet olarak görülebilir; çünkü programcıları
 `inheritance` yerine `composition` kullanmaya teşvik eder ve immutable type’lar için gereklidir.
 
 Static factory method’ların ikinci bir dezavantajı, programcılar tarafından bulunmalarının zor olmasıdır.
