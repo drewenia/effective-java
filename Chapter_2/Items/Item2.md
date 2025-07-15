@@ -3,7 +3,7 @@
 # Çok sayıda constructor parametresiyle karşılaşıldığında builder kullanmayı düşünün.
 
 Static factory’ler ve constructor’lar ortak bir sınırlamaya sahiptir: çok sayıda optional parametre olduğunda iyi
-ölçeklenmezler. Paketlenmiş gıdalarda yer alan `Nutrition Facts` etiketi temsil eden bir class durumunu düşünün. Bu
+ölçeklenmezler. Paketlenmiş gıdalarda yer alan `Nutrition Facts` etiketini represent eden bir class durumunu düşünün. Bu
 etiketlerde birkaç zorunlu alan vardır — porsiyon boyutu, kap başına porsiyon sayısı ve porsiyon başına kalori — ve
 yirmiden fazla optional field bulunur — toplam yağ, doymuş yağ, trans yağ, kolesterol, sodyum ve benzeri. Çoğu ürünün bu
 optional field'lerin sadece birkaçında sıfırdan farklı değerleri vardır.
@@ -295,7 +295,7 @@ abstract class Pizza {
 
     // Recursive type parameter
     abstract static class Builder<T extends Builder<T>> {
-        // Topping içerisinde ki hiçbir enum value'sunu alma
+        // Topping içerisinde ki hiçbir enum value'sunu almamak için kullanılan noneOf methodu
         EnumSet<Topping> toppings = EnumSet.noneOf(Topping.class);
 
         public T addTopping(Topping topping) {
@@ -412,7 +412,7 @@ Calzone calzonePizza = new Calzone.Builder()
         .build();
 ```
 
-Dikkat edin, her subclass'ın builder’ındaki build method, doğru subclass'ıdönecek şekilde tanımlanmıştır:
+Dikkat edin, her subclass'ın builder’ındaki build method, doğru subclass'ı dönecek şekilde tanımlanmıştır:
 `NyPizza.Builder` içindeki `build` method `NyPizza` dönerken, `Calzone.Builder`’daki `build` method `Calzone` döner.
 Bu teknik, bir subclass'ın method’unun, parent class'da tanımlanan return type'ının bir subtype'ını return edecek
 şekilde tanımlanmasına `covariant return typing` adı verilir. Bu, client’ların bu builder’ları cast işlemi yapmadan
