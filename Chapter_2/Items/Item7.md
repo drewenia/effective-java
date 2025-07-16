@@ -26,7 +26,7 @@ class Stack {
     public Object pop(){
         if (size == 0)
             throw new EmptyStackException();
-        return elements[size--];
+        return elements[--size];
     }
 
     /* Array'in büyümesi (grow) gerektiğinde kapasiteyi yaklaşık iki katına çıkararak en az bir element için yer aç. */
@@ -74,7 +74,7 @@ olduğunca hızlı tespit etmek her zaman faydalıdır.
 
 Programcılar bu problemle ilk karşılaştıklarında, program işini bitirir bitirmez her object referansını null yaparak
 aşırı tepki verebilirler. Bu ne gerekli ne de arzu edilen bir durumdur; programı gereksiz yere karmaşıklaştırır.
-Object referanslarını null yapmak, kuraldan çok exception olmalıdır. Obsolete referansı ortadan kaldırmanın en iyi yolu,
+Object referanslarını null yapmak, kuraldan çok istisna olmalıdır. Obsolete referansı ortadan kaldırmanın en iyi yolu,
 referansı içeren variable'ın `out of scope`'a çıkmasını sağlamaktır. Bu, her variable'ı mümkün olan en dar `(narrowest)`
 scope'da define edersen doğal olarak gerçekleşir.
 
@@ -109,7 +109,7 @@ biraz farklı davranır.
 
 ### Strong, Soft, and Weak References
 
-`WeakHashMap`’in nasıl çalıştığını anlamak için `WeakReference sınıfına bakmamız gerekir. Bu sınıf, `WeakHashMap`
+`WeakHashMap`’in nasıl çalıştığını anlamak için `WeakReference` sınıfına bakmamız gerekir. Bu sınıf, `WeakHashMap`
 implementasyonundaki `key’ler için temel construct'dır. Java’da üç main reference type'ı vardır ve bunları sonraki
 bölümlerde açıklayacağız.
 
@@ -344,7 +344,7 @@ System.out.println(map); // => {second=SECOND, third=THIRD, forth=FORTH}
 ```
 
 2 - `Eviction by Weight` - Cache boyutunu custom bir ağırlık `(weight)` fonksiyonu kullanarak da limitleyebiliriz.
-Aşağıdaki kodda, uzunluğu `(length)` custom `weight` fonksiyonu olarak kullanacağız:
+Aşağıdaki kodda, uzunluğu `(length)` custom `(weight)` fonksiyonu olarak kullanacağız:
 
 ```
 CacheLoader<String, String> loader = new CacheLoader<String, String>() {
