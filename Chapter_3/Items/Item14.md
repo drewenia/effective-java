@@ -38,7 +38,7 @@ public interface Comparable<T> {
 ```
 
 `compareTo` metodunun general contract'ı, equals metodununkiyle benzerdir: Bu object'i, belirtilen object ile order'a
-göre compare eder. Bu object belirtilen object'ten küçükse `negative` bir integer, eşitse `zero` veya büyükse `pozitive`
+göre compare eder. Bu object belirtilen object'ten küçükse `negative` bir integer, eşitse `zero` veya büyükse `positive`
 bir integer döndürür. Belirtilen object'in type'ı, bu object ile compare edilmesini engelliyorsa `ClassCastException`
 fırlatır.
 
@@ -50,7 +50,7 @@ Aşağıdaki açıklamada, `sgn(expression)` notasyonu, expression'ın değeri `
   anlamına gelir.)
 
 * Implementor, ilişkinin `(relation)` transitive olmasını da sağlamalıdır: `(x.compareTo(y) > 0 ve y.compareTo(z) > 0)`
-  `x.compareTo(z) > 0 olduğunu ima eder.
+  `x.compareTo(z) > 0` olduğunu ima eder.
 
 * Sonunda, Implementor, `x.compareTo(y) == 0` olmasının, tüm `z`'ler için `sgn(x.compareTo(z)) == sgn(y.compareTo(z))`
   olmasını ima etmesini sağlamalıdır.
