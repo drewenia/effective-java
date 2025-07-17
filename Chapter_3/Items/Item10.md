@@ -143,7 +143,7 @@ properties'i vardır ve bunlar bazı genel temalar altında kategorize edilebili
 * Eğer accessible constructor'lar varsa, kaldırılmaları için `deprecated` olarak işaretlenmelidirler.
 
 * Sınıf yalnızca factory metotlar aracılığıyla instantiate edilmelidir. Factory’den alınan instance `new` bir instance
-  olabilir veya olmayabilir ve calling kod onun kimliği `(identity) hakkında herhangi bir varsayımda bulunmamalıdır.
+  olabilir veya olmayabilir ve calling kod onun kimliği `(identity)` hakkında herhangi bir varsayımda bulunmamalıdır.
 
 3 - `Identity and equals(), hashCode(), toString() Methods` - value-based sınıflar kimliksizdir `(identity)`. Java’da
 hâlâ sınıf oldukları için, Object sınıfından inherited metotların nasıl çalıştığını anlamamız gerekiyor:
@@ -245,7 +245,7 @@ gösterilen aynı noktanın iki instance'ının eşit olduğunu test edelim:
 
 ```
 Point point1 = Point.valueOfPoint(1, 2, 3);
-Point point2 = Point.valueOfPoint(1,2,3);
+Point point2 = Point.valueOfPoint(1, 2, 3);
 assertEquals(point1,point2);
 ```
 
@@ -254,7 +254,7 @@ olduklarını da görelim:
 
 ```
 Point point1 = Point.valueOfPoint(0, 0, 0);
-Point point2 = Point.valueOfPoint(0,0,0);
+Point point2 = Point.valueOfPoint(0, 0, 0);
 assertEquals(point1,point2);
 ```
 
@@ -792,7 +792,7 @@ String s = "polish";
 Beklendiği gibi, `cis.equals(s)` true döner. Sorun şu ki, `CaseInsensitiveString` içindeki `equals` metodu sıradan
 `(ordinary)` stringleri tanırken, String içindeki `equals` metodu büyük-küçük harf duyarsız stringlerden habersizdir.
 Bu yüzden `s.equals(cis) false` döner, bu da Symmetry'nin açık bir ihlalidir. Diyelim ki bir büyük-küçük harf duyarsız
-stringi bir Collection'a koydunuz:
+string'i bir Collection'a koydunuz:
 
 ```
 CaseInsensitiveString cis = new CaseInsensitiveString("Polish");
@@ -877,7 +877,7 @@ public boolean equals(Object o){
 
 Bu metodun sorunu, bir `point` ile bir `color point`’i karşılaştırdığınızda ve tam tersi durumda farklı sonuçlar elde
 edebilmenizdir. İlk karşılaştırma color'ı göz ardı ederken, ikinci karşılaştırma her zaman `false` döner çünkü argümanın
-type'ı uygun değildir. Bunu concrete etmek için bir point ve bir color point oluşturalım:
+type'ı uygun değildir. Bunu somutlaştırmak için bir point ve bir color point oluşturalım:
 
 ```
 Point p = new Point(1,2);
@@ -1225,7 +1225,7 @@ System.out.println(obj5.equals(obj6)); // => false
 comparison'da `autoboxing` gerektirir ve bu da düşük performansa yol açar. Array field’lar için, bu yönergeleri her
 element’e uygulayın. Bir array field’daki her element anlamlıysa, `Arrays.equals` metotlarından birini kullanın.
 
-Bazı object referans field’ları geçerli `olarak` null içerebilir `(contain)`. NullPointerException olasılığından
+Bazı object referans field’ları geçerli olarak `null` içerebilir `(contain)`. NullPointerException olasılığından
 kaçınmak için, bu tür field’ların equality'sini `Objects.equals(Object, Object)` static metodunu kullanarak kontrol
 edin. CaseInsensitiveString gibi bazı sınıflar için, field comparison'ları simple equality testlerinden daha
 complex'dir. Bu teknik, immutable sınıflar için en uygunudur; Eğer object değişebiliyorsa, canonical form'u güncel
