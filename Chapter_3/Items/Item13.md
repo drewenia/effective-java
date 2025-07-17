@@ -10,7 +10,7 @@ edileceğini anlatır, ne zaman uygun olduğunu tartışır ve alternatiflerini 
 
 Peki Cloneable, herhangi bir metot içermediğine göre ne işe yarar? Object'in protected clone implementation'ınının
 behavior'ını belirler: Eğer bir sınıf Cloneable'ı implement ediyorsa, Object'in clone metodu object'in `field-by-field`
-bir kopyasını döndürür; aksi takdirde, `CloneNotSupportedException` fırlatır. Bu, interface'lerin oldukça atypical bir
+bir kopyasını döndürür; aksi takdirde, `CloneNotSupportedException` fırlatır. Bu, interface'lerin oldukça typical bir
 kullanımıdır ve taklit `(emulated)` edilmemelidir. Normalde, bir interface'i implement etmek, bir sınıfın client'ları
 için neler yapabileceği hakkında bir şeyler söyler. Bu case'de, bir superclass'da ki protected bir metodun behavior'unu
 değiştirir.
