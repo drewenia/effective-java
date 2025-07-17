@@ -1,9 +1,12 @@
 # In public classes, use accessor methods, not public fields
 
-`public static final field`'ler tarafından referans verilen object'lerin immutable olmasını sağlayın.
+# Public class’larda, public field’lar yerine accessor method’ları kullanın.
+
+Bazen, yalnızca instance field’ları gruplamak dışında hiçbir amacı olmayan degenerate class’lar yazma eğiliminde
+olabilirsiniz:
 
 ```
-// Degenerate classes like this should not be public!
+// Bu tür degenerate class’lar public olmamalıdır!
 class Point {
     public double x;
     public double y;
@@ -17,7 +20,7 @@ class'ları tamamen yanlış bulur ve her zaman private field'lara ve public acc
 class'lar için mutator'lara (setter'lar) sahip class'larla değiştirilmesi gerektiğini düşünür.
 
 ```
-// Encapsulation of data by accessor methods and mutators
+// Data’nın accessor method’lar ve mutator’lar ile encapsulation’ı
 class Point {
     private double x;
     private double y;
