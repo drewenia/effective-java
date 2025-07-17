@@ -17,7 +17,7 @@ engeller. İşte, Object spesifikasyonundan uyarlanmış contract:
 
 `hashCode` metodunu override etmediğinizde ihlal edilen temel hüküm ikinci olanıdır: equal object'lerin hashCode
 value'ları da equal olmalıdır. İki ayrı instance, bir sınıfın `equals` metoduna göre logically olarak equal olabilir;
-ancak Object’in hashCode metoduna göre, onlar sadece pek ortak noktası olmayan iki object'dir. Bu nedenle, Object’in
+ancak Object’in hashCode metoduna göre, onlar sadece tek ortak noktası olmayan iki object'dir. Bu nedenle, Object’in
 hashCode metodu, contract'ın gerektirdiği gibi iki equal number yerine, random görünen iki farklı number döndürür.
 
 Örneğin, PhoneNumber sınıfının instance'larını bir HashMap’te Key olarak kullanmaya çalıştığınızı varsayalım:
