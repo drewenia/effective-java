@@ -80,6 +80,10 @@
 
     * Guava Forwarding Class
 
+        * PeekingIterator
+
+        * AbstractIterator
+
 [Item 19](Chapter_4/Items/Item19.md) (Design and document for inheritance or else prohibit it)
 
 [Item 20](Chapter_4/Items/Item20.md) (Prefer interfaces to abstract classes)

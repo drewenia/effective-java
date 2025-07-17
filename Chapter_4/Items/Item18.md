@@ -1,5 +1,7 @@
 # Favor composition over inheritance
 
+# Inheritance yerine composition’ı tercih edin.
+
 Inheritance, code reuse sağlamak için güçlü bir yoldur, ancak her zaman "job" için en iyi tool değildir. Uygunsuz
 kullanıldığında, kırılgan yazılımlara yol açar. Inheritance'ı, subclass ve superclass implementasyonlarının aynı
 programcıların kontrolünde olduğu bir package içinde kullanmak güvenlidir. Ayrıca, specifically extension için
@@ -15,7 +17,7 @@ değişirse, subclass bozulabilir; üstelik subclass'ın kodu hiç değiştirilm
 superclass'ın yazarları onu özellikle genişletilmek üzere tasarlayıp belgelenmedikçe, bir subclass superclass ile
 birlikte gelişmek zorundadır.
 
-Concrete için, HashSet kullanan bir programımız olduğunu varsayalım. Programımızın performansını ayarlamak için,
+Somutlaştırmak için, HashSet kullanan bir programımız olduğunu varsayalım. Programımızın performansını ayarlamak için,
 HashSet'e oluşturulduğundan beri kaç element eklendiğini sorgulamamız gerekiyor (bu, bir element çıkarıldığında azalan
 mevcut boyutuyla karıştırılmamalıdır). Bu functionality sağlamak için, denenen `(attempted)` element insertion sayısını
 tutan ve bu sayıya erişim sağlayan bir metodu export eden bir HashSet varyantı yazıyoruz. HashSet sınıfı, element
