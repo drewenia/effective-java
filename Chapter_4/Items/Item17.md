@@ -244,11 +244,11 @@ Artık immutable bir sınıfın nasıl oluşturulacağını ve immutability'nin 
 tasarım alternatifini tartışalım. Immutability'yi garanti etmek için, bir sınıfın kendisinin subclass'lara izin
 vermemesi gerektiğini hatırlayın. Bu, sınıfı `final` yaparak yapılabilir, ancak başka, daha esnek bir alternatif daha
 vardır. Immutable bir sınıfı final yapmak yerine, tüm constructor'larını `private` veya `package-private` yapabilir
-ve `public constructor`'lar yerine `public static factory` metotları ekleyebilirsiniz. Bunu concrete etmek gerekirse, bu
+ve `public constructor`'lar yerine `public static factory` metotları ekleyebilirsiniz. Bunu somutlaştırmak gerekirse, bu
 yaklaşımı benimsediğinizde `Complex` şöyle görünecektir:
 
 ```
-// Immutable class with static factories instead of constructors
+// Constructor’lar yerine static factory’lerle oluşturulmuş immutable class
 public final class Complex {
     private final double real;
     private final double imaginary;
