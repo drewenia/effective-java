@@ -1,6 +1,6 @@
 <component name="libraryTable">
   <library name="google.guava" type="repository">
-    <properties maven-id="com.google.guava:guava:33.4.8-jre" />
+    <properties maven-id="com.google.guava:guava:LATEST" />
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/33.4.8-jre/guava-33.4.8-jre.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/failureaccess/1.0.3/failureaccess-1.0.3.jar!/" />

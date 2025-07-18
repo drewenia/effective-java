@@ -1,5 +1,7 @@
 # Prefer interfaces to abstract classes
 
+# Abstract class’lar yerine interface’leri tercih edin.
+
 Java'nın multiple implementation'a izin veren bir tür tanımlamak için iki mekanizması vardır: interface'ler ve abstract
 class'lar. Java 8'de interface'ler için default method'ların `[JLS 9.4.3]` kullanıma sunulmasından bu yana, her iki
 mekanizma da bazı instance method'ları için implementation'lar sağlamanıza olanak tanır.
@@ -77,7 +79,7 @@ define etmek için abstract class'lar kullanırsanız, functionality eklemek ist
 alternatifsiz bırakırsınız. Ortaya çıkan sınıflar, wrapper class'lardan daha az güçlü ve daha kırılgandır. Başka
 interface method'ları açısından bir interface method'unun bariz bir implementation'ı olduğunda, programcılara default
 method şeklinde implementation yardımı sağlamayı düşünün. Bu tekniğe bir örnek için, sayfa 104'teki removeIf method'una
-bakınız. Eğer default method'lar sağlıyorsanız, bunları inheritance için `@implSpec Javadoc tag'ini kullanarak
+bakınız. Eğer default method'lar sağlıyorsanız, bunları inheritance için `@implSpec` Javadoc tag'ini kullanarak
 belgelediğinizden emin olun.
 
 Default method'larla sağlayabileceğiniz implementation yardımı konusunda sınırlar vardır. Birçok interface equals ve
@@ -204,6 +206,396 @@ implementor'ın görevine yardımcı olabilir. Interface'i implement eden sını
 skeletal implementation'ı extend eden private inner class'ın içerdiği bir instance'a yönlendirebilir. Simulated multiple
 inheritance olarak bilinen bu teknik, Madde 18'de tartışılan wrapper class idiom'uyla yakından ilişkilidir. Multiple
 inheritance'ın faydalarının çoğunu sağlarken, tuzaklarından kaçınır.
+
+> Favor Skeletal Implementation in Java (https://dzone.com/articles/favour-skeletal-interface-in-java)
+
+Skeletal implementation, interface ve abstract class'ın avantajlarını birlikte kullanabileceğimiz bir tasarımdır. Java
+Collection API bu tür bir tasarımı benimsemiştir: AbstractSet, AbstractMap vb. Skeletal interface'lere örnektir. Farklı
+type'larda vending `(otomat)` machine'ler oluşturmak istediğimizi varsayalım. Makineden ürün almak için vending
+machine'i başlatmamız, ardından ürünü seçmemiz, ödememiz ve sonra ürünü almamız gerekir. Bundan sonra, vending machine
+durdurulmalıdır.
+
+### İlk yaklaşım
+
+Farklı ürün türleri için bir vending machine interface'i oluşturabiliriz. Başlamak için, vending machine için concrete
+bir implementation oluşturacağız.
+
+```
+interface Vending{
+    void start();
+    void chooseProduct();
+    void stop();
+    void process();
+}
+```
+
+CandyVending.java
+
+```
+class CandyVending implements Vending {
+
+    @Override
+    public void start() {
+        System.out.println("Start Vending machine");
+    }
+
+    @Override
+    public void chooseProduct() {
+        System.out.println("Produce different candies");
+        System.out.println("Choose a type of candy");
+        System.out.println("pay for candy");
+        System.out.println("collect candy");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Stop Vending machine");
+    }
+
+    @Override
+    public void process() {
+        start();
+        chooseProduct();
+        stop();
+    }
+}
+```
+
+DrinkVending.java
+
+```
+class DrinkVending implements Vending{
+
+    @Override
+    public void start() {
+        System.out.println("Start Vending machine");
+    }
+
+    @Override
+    public void chooseProduct() {
+        System.out.println("Produce different soft drinks");
+        System.out.println("Choose a type of soft drinks");
+        System.out.println("pay for drinks");
+        System.out.println("collect drinks");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("stop Vending machine");
+    }
+
+    @Override
+    public void process() {
+        start();
+        chooseProduct();
+        stop();
+    }
+}
+```
+
+Derived.java;
+
+```
+public static void main(String[] args) {
+    Vending candy = new CandyVending();
+    candy.process();
+    Vending drink = new DrinkVending();
+    drink.process();
+}
+```
+
+Output;
+
+```
+Start Vending machine
+Produce different candies
+Choose a type of candy
+pay for candy
+collect candy
+Stop Vending machine
+Start Vending machine
+Produce different soft drinks
+Choose a type of soft drinks
+pay for drinks
+collect drinks
+stop Vending machine
+```
+
+Basitlik için, her adımı ayrı bir method olarak ayırmadım. `chooseProduct()` içinde bazı adımları birleştirdim. Güzel
+görünmesine rağmen, yukarıdaki kodun bazı sorunları vardır; dikkatlice incelersek, çok fazla tekrar eden kod olduğunu
+görebiliriz. `start()`, `stop()` ve `process()` method'ları her concrete implementation'da aynı işi yapar. Concrete
+implementation sayısı arttıkça kod tekrarları üç katına çıkar. Common kodu koymak için bir utility class
+oluşturabiliriz, ancak bu single responsibility prensibini bozacak ve shotgun surgery kod smell'ine yol açabilir.
+Interface bir contract olduğundan ve method body'si içermediğinden, her implementation contract'ı yerine getirmeli ve
+tüm methodların implementation'ını sağlamalıdır. Bazı methodlar concrete implementation'lar arasında tekrar edebilir.
+
+### İkinci yaklaşım
+
+Bunu Abstract class ile aşabiliriz.
+
+```
+abstract class Vending {
+    public void start() {
+        System.out.println("Start Vending machine");
+    }
+
+    abstract void chooseProduct();
+
+    public void stop() {
+        System.out.println("Stop Vending machine");
+    }
+
+    public void process() {
+        start();
+        chooseProduct();
+        stop();
+    }
+}
+```
+
+CandyVending.java;
+
+```
+class CandyVending extends Vending {
+    @Override
+    void chooseProduct() {
+        System.out.println("Produce different candies");
+        System.out.println("Choose a type of candy");
+        System.out.println("pay for candy");
+        System.out.println("collect candy");
+    }
+}
+```
+
+DrinkVending.java;
+
+```
+class DrinkVending extends Vending{
+    @Override
+    void chooseProduct() {
+        System.out.println("Produce different soft drinks");
+        System.out.println("Choose a type of soft drinks");
+        System.out.println("pay for drinks");
+        System.out.println("collect drinks");
+    }
+}
+```
+
+Derived.java;
+
+```
+public static void main(String[] args) {
+    Vending candy = new CandyVending();
+    candy.process();
+    Vending drink = new DrinkVending();
+    drink.process();
+}
+```
+
+Output;
+
+```
+Start Vending machine
+Produce different candies
+Choose a type of candy
+pay for candy
+collect candy
+Stop Vending machine
+Start Vending machine
+Produce different soft drinks
+Choose a type of soft drinks
+pay for drinks
+collect drinks
+Stop Vending machine
+```
+
+Burada, common kod implementation'ını abstract class içine koydum. Ve CandyVending ile DrinkVending, Vending'i extends
+eder. Bu implementation tekrar eden koddan kurtulmayı sağlar ancak yeni bir sorun ekler. CandyVending ve DrinkVending
+Abstract class'ı extend ettiğinden, başka bir class'ı extend etme imkanı yoktur veya Multiple inheritance desteklenmez.
+Diyelim ki vending machine'i temizleyecek ve kontrol edecek bir `VendingServicing` class eklemek istiyorum. Bu durumda,
+Vending'i zaten extend ettiğim için `VendingServicing`'i extend edemem. Yapabileceğim şeylerden biri composition
+oluşturmak, ancak yine de `VendingMachine`'i buna geçmemiz gerekir ki bu da `VendingServicing` ile VendingMachine
+arasında güçlü bir `coupling` oluşturur. Diamond problem nedeniyle multiple inheritance destekleyemeyiz. Hem interface
+hem de Abstract'in avantajlarını kullanabilseydik harika olurdu.
+
+Skeletal implementation elde etmek için:
+
+1 - Interface create et
+
+2 - O interface'i implement eden ve common methodların implementation'ını sağlayan bir Abstract class oluşturun.
+
+3 - Subclass'da, Abstract class'ı extends eden `private inner class` oluşturun. Şimdi bu class, Abstract class'a yapılan
+call'ları delegate ederek common methodları kullanırken herhangi bir interface'i extend ve implement edebilir.
+
+```
+interface Vending{
+    void start();
+    void chooseProduct();
+    void stop();
+    void process();
+}
+```
+
+VendingService.java;
+
+```
+class VendingService{
+    public void service(){
+        System.out.println("Clean the vending machine");
+    }
+}
+```
+
+AbstractVending.java;
+
+```
+abstract class AbstractVending implements Vending{
+    @Override
+    public void start() {
+        System.out.println("Start Vending machine");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Stop Vending machine");
+    }
+
+    @Override
+    public void process() {
+        start();
+        chooseProduct();
+        stop();
+    }
+}
+```
+
+CandyVending.java;
+
+```
+class CandyVending implements Vending {
+    private class AbstractVendingDelegator extends AbstractVending {
+
+        @Override
+        public void chooseProduct() {
+            System.out.println("Produce different candies");
+            System.out.println("Choose a type of candy");
+            System.out.println("pay for candy");
+            System.out.println("collect candy");
+        }
+    }
+
+    AbstractVendingDelegator delegator = new AbstractVendingDelegator();
+
+    @Override
+    public void start() {
+        delegator.start();
+    }
+
+    @Override
+    public void chooseProduct() {
+        delegator.chooseProduct();
+    }
+
+    @Override
+    public void stop() {
+        delegator.stop();
+    }
+
+    @Override
+    public void process() {
+        delegator.process();
+    }
+}
+```
+
+DrinkVending.java;
+
+```
+class DrinkVending extends VendingService implements Vending {
+    private class AbstractVendingDelegator extends AbstractVending {
+
+        @Override
+        public void chooseProduct() {
+            System.out.println("Produce different soft drinks");
+            System.out.println("Choose a type of soft drinks");
+            System.out.println("pay for drinks");
+            System.out.println("collect drinks");
+        }
+    }
+    AbstractVendingDelegator delegator = new AbstractVendingDelegator();
+
+    @Override
+    public void start() {
+        delegator.start();
+    }
+
+    @Override
+    public void chooseProduct() {
+        delegator.chooseProduct();
+    }
+
+    @Override
+    public void stop() {
+        delegator.stop();
+    }
+
+    @Override
+    public void process() {
+        delegator.process();
+    }
+}
+```
+
+Derived.java;
+
+```
+public static void main(String[] args) {
+    Vending candy = new CandyVending();
+    candy.process();
+
+    Vending drink = new DrinkVending();
+    drink.process();
+
+    if (drink instanceof VendingService vs){
+        vs.service();
+    }
+}
+```
+
+Output;
+
+```
+Start Vending machine
+Produce different candies
+Choose a type of candy
+pay for candy
+collect candy
+Stop Vending machine
+Start Vending machine
+Produce different soft drinks
+Choose a type of soft drinks
+pay for drinks
+collect drinks
+Stop Vending machine
+Clean the vending machine
+```
+
+Yukarıdaki tasarıma bakarak, bir interface oluşturuyorum, ardından tüm ortak implementation'ları tanımladığım bir
+abstract class oluşturuyorum. Sonra, her subclass için bir delegator class implement ediyorum. Ve o delegator'ı
+kullanarak call'u `AbstractVending`'e `forward` ediyoruz.
+
+Skeletal Implementation'ın faydaları;
+
+- Subclass, DrinkVending gibi diğer class'ları extend edebilir.
+
+- Call'ları Abstract class'a delegate ederek tekrar eden koddan kurtulmak.
+
+- Subclass, interface'in yeni bir implementation'ına ihtiyaç duyarsa bunu yapabilir.
+
+Interface'inizde bazı common methodlar varsa, her zaman bir Abstract class oluşturun. Ardından subclass'larda delegator
+kullanabilirsiniz. Her zaman skeletal implementation kullanmaya çalışın.
+
+> End of documentation
 
 > Simulated multiple inheritance example
 

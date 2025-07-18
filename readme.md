@@ -90,6 +90,8 @@
 
     * [JLS 9.4.3] Interface Method Body
 
+    * Template Method Pattern Example
+
     * Java simulated multiple inheritance example
 
     * AbstractMap.SimpleEntry Explanation
