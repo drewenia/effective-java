@@ -13,7 +13,7 @@ invoke edebileceği tüm durumları belgelemelidir. Örneğin, invocation'lar ba
 initializer'lardan gelebilir.
 
 Override edilebilir method'ları invoke eden bir method, bu invoke'ların bir açıklamasını kendi dokümantasyon
-comment'inin sonunda içerir. Açıklama, Javadoc etiketi `@implSpec tarafından oluşturulan, "Implementation Requirements"
+comment'inin sonunda içerir. Açıklama, Javadoc etiketi `@implSpec` tarafından oluşturulan, "Implementation Requirements"
 başlıklı spesifikasyonun özel bir bölümündedir. Bu bölüm, method'un inner working'ini açıklar.
 
 İşte `java.util.AbstractCollection` spesifikasyonundan kopyalanmış bir örnek:
