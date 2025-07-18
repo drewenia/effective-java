@@ -1,5 +1,7 @@
 # Design interfaces for posterity
 
+# Gelecek için interface'ler tasarlayın.
+
 Java 8'den önce, mevcut implementation'ları bozmadan interface'lere metot eklemek imkansızdı. Eğer bir interface'e yeni
 bir metot eklerseniz, mevcut implementation'larda genellikle bu metot bulunmaz ve bu da compile time hatasına yol açar.
 Java 8'de, mevcut interface'lere metot eklemeyi sağlamak amacıyla default method construct `[JLS 9.4]` eklendi. Ancak
@@ -7,7 +9,7 @@ mevcut interface'lere yeni metotlar eklemek risklerle doludur.
 
 Bir default method'un declaration'ı, interface'i implement eden ancak default method'u implement etmeyen tüm sınıflar
 tarafından kullanılan bir default implementation içerir. Java'ya default method'ların eklenmesi, mevcut bir interface'e
-metot eklemeyi mümkün kılsa da, bu metotların önceden var olan tüm implementation'larda çalışacağına dair bir garanti
+metot eklemeyi mümkün kılsada, bu metotların önceden var olan tüm implementation'larda çalışacağına dair bir garanti
 yoktur. Default method'lar, implementor'ların bilgisi veya rızası olmadan mevcut implementation'a "inject" edilir.
 Java 8'den önce, bu implementation'lar, interface'erin asla yeni metotlar edinmeyeceği (kapalı, zımnî, söylenmeden
 anlaşılan/ifade edilen) `tacit`  anlayışıyla yazılıyordu.
@@ -193,7 +195,19 @@ tutarsızlıklara yol açabilir.
 ### Synchronized Collection vs Concurrent Collections
 
 Bu örnek, synchronized collection'ları `CopyOnWriteArrayList` gibi concurrent collection'larla karşılaştırır. Her
-yaklaşım için performans farklarını ve kullanım senaryolarını gösterir.
+yaklaşım için performans farklarını ve kullanım senaryolarını gösterir. CopyOnWriteArrayList class'ı, List interface'ini
+implement eden ve JDK 1.5'te tanıtılan bir class'tır. Bu, tüm modification'ların (add, set, remove, vb.) fresh bir kopya
+oluşturularak gerçekleştirildiği, ArrayList'in enchanced bir versiyonudur. Adından da anlaşılacağı gibi,
+`CopyOnWriteArrayList` her update operation'ı için altta yatan `(underlying)` ArrayList'in klonlanmış bir kopyasını
+oluşturur; belirli bir noktada her ikisi de otomatik olarak senkronize edilir, bu JVM tarafından handle edilir. Bu
+nedenle, read operation gerçekleştiren thread'ler için herhangi bir etkisi yoktur. Kullanımı maliyetlidir çünkü her
+update operation için klonlanmış bir kopya oluşturulur. Bu nedenle, sık yapılan operation read operation ise
+CopyOnWriteArrayList en iyi tercihtir. Altta yatan `(underlying)` data structure grow-able bir array'dir. Bu,
+ArrayList'in `thread-safe` versiyonudur. Ekleme sırası korunur, duplicates, `null` ve `heterogeneous` Object'lere izin
+verilir. `CopyOnWriteArrayList` ile ilgili en önemli nokta, `CopyOnWriteArrayList` Iterator'ının remove operation'ı
+gerçekleştiremeyeceğidir; aksi takdirde `UnsupportedOperationException` hatası alınır. CopyOnWriteArrayList
+iterator'ındaki `add()` ve `set()` method'ları da `UnsupportedOperationException` fırlatır. Ayrıca, CopyOnWriteArrayList
+iterator'ı asla `ConcurrentModificationException` fırlatmaz.
 
 ```
 // Synchronized collection
@@ -235,6 +249,33 @@ Synchronized collection'lar kaba taneli `(coarse-grained) locking` kullanırken,
 teknikler kullanır. Performans characteristic'leri use case'lere göre farklılık gösterir. Synchronized collection'lar,
 genellikle write-heavy ve simple operation'lar içeren workload'ları için daha iyidir. Concurrent collection'lar,
 genellikle read-heavy workload'ları veya complex operation'lar için daha iyi performans gösterir.
+
+CopyOnWriteArrayList example;
+
+```
+public static void main(String[] args) throws InterruptedException {
+    Integer[] integerArray = new Integer[]{1,3,5,8};
+    CopyOnWriteArrayList<Integer> numbers = new CopyOnWriteArrayList<>(integerArray);
+    
+    /* CopyOnWriteArrayList için bir iterator oluşturduğumuzda, iterator() call edildiği anda listedeki 
+    data'ların immutable bir snapshot'ını elde ettiğimizi unutmayın. */
+    
+    Iterator<Integer> iterator = numbers.iterator();
+    numbers.add(10);
+
+    List<Integer> result = new LinkedList<>();
+    /* Bu nedenle, üzerinde iteration yaparken, iteration'da 10 sayısını görmeyeceğiz: */
+    iterator.forEachRemaining(result::add);
+    System.out.println(result); // => [1, 3, 5, 8]
+
+    /* Yeni oluşturulan Iterator kullanılarak yapılan sonraki iterating'ler de eklenen 10 sayısını 
+    döndürür: */
+    Iterator<Integer> iterator2 = numbers.iterator();
+    List<Integer> result2 = new LinkedList<>();
+    iterator2.forEachRemaining(result2::add);
+    System.out.println(result2); // => [1, 3, 5, 8, 10]
+}
+```
 
 ### Synchronized Collection with Custom Objects
 
@@ -377,94 +418,6 @@ single-thread'li operation'ları karşılaştırır. Ayrıca synchronized collec
 Sonuçlar, single thread'li senaryolarda synchronization'ın ek yük getirdiğini gösteriyor. Ancak, multi thread
 ortamlarında synchronization, data corruption'ı önler ve thread safety sağlar; bu da bir miktar performans maliyetiyle
 gerçekleşir.
-
-> End of documentation
-
-> CopyOnWriteArrayList API
-
-Bu, multi-threaded programlarda çok yararlı bir yapıdır – liste üzerinde açık `(explicit)` bir synchronization olmadan
-thread-safe bir şekilde iterate yapmak istediğimizde. CopyOnWriteArrayList tasarımı, synchronization ihtiyacı olmadan
-thread-safe yapmak için ilginç bir teknik kullanır. `add()` veya `remove()` gibi herhangi bir modify methodu
-kullandığımızda, `CopyOnWriteArrayList`'in tüm content'i yeni internal copy'e kopyalanır. Bu basit gerçek nedeniyle,
-concurrent modification olsa bile liste üzerinde güvenli bir şekilde iterate edebiliriz.
-
-CopyOnWriteArrayList üzerinde `iterator()` methodunu çağırdığımızda, CopyOnWriteArrayList content'inin immutable
-snapshot’una dayalı bir `Iterator` döner. Content'i, Iterator oluşturulduğu zamandaki `ArrayList` içindeki datanın tam
-bir kopyasıdır.
-
-Bu arada başka bir thread listeden bir element eklese veya silse bile, bu modification listeden sonraki data
-aramalarında kullanılacak data'nın yeni bir kopyasını oluşturur. Bu data structure’ın characteristics’ı, üzerinde
-modification yapmaktan daha sık iterate ettiğimiz durumlarda özellikle kullanışlıdır.
-
-Eğer senaryomuzda element eklemek yaygın bir operation ise, `CopyOnWriteArrayList` iyi bir seçim olmaz – çünkü ek
-kopyalamalar kesinlikle düşük performansa yol açar.
-
-### Insert Yaparken CopyOnWriteArrayList Üzerinde Iterate Etmek
-
-Diyelim ki, integer’ları tutan bir `CopyOnWriteArrayList` instance'ı oluşturuyoruz:
-
-```
-CopyOnWriteArrayList<Integer> numbers = new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
-
-// Sonra, o array üzerinde iterate etmek istiyoruz, bu yüzden bir Iterator instance'ı oluşturuyoruz:
-Iterator<Integer> iterator = numbers.iterator();
-
-// Iterator oluşturulduktan sonra, numbers listesine yeni bir element ekliyoruz:
-numbers.add(10);
-```
-
-Unutmayın ki, CopyOnWriteArrayList için bir iterator oluşturduğumuzda, `iterator()` call edildiği zamandaki listenin
-immutable bir snapshot’unu alıyoruz. Bundan dolayı, iterate ederken iteration’da 10 sayısını görmeyeceğiz:
-
-```
-CopyOnWriteArrayList<Integer> numbers = new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
-
-Iterator<Integer> iterator = numbers.iterator();
-
-numbers.add(10);
-
-List<Integer> result = new LinkedList<>();
-iterator.forEachRemaining(result::add);
-
-System.out.println(result); // => [1, 3, 5, 8]
-```
-
-Subsequent iteration’da yeni oluşturulan Iterator, eklenen 10 sayısını da döndürecektir:
-
-```
-CopyOnWriteArrayList<Integer> numbers = new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
-
-Iterator<Integer> iterator = numbers.iterator();
-
-numbers.add(10);
-
-List<Integer> result = new LinkedList<>();
-iterator.forEachRemaining(result::add);
-
-System.out.println(result); // => [1, 3, 5, 8]
-
-Iterator<Integer> iterator2 = numbers.iterator();
-
-List<Integer> result2 = new LinkedList<>();
-iterator2.forEachRemaining(result2::add);
-
-System.out.println(result2); // => [1, 3, 5, 8, 10]
-```
-
-### Iterate Ederken Remove İşlemi Yasaktır
-
-CopyOnWriteArrayList, temel `(underlying)` liste modification olsa bile elementler üzerinde güvenli iterate etmeyi
-mümkün kılmak için oluşturulmuştur. Kopyalama mekanizması nedeniyle, dönen Iterator üzerinde `remove()` operation’u izin
-verilmez – bu da `UnsupportedOperationException` ile sonuçlanır:
-
-```
-CopyOnWriteArrayList<Integer> numbers = new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
-
-Iterator<Integer> iterator = numbers.iterator();
-while(iterator.hasNext()){
-    iterator.remove();
-}
-```
 
 > End of documentation
 

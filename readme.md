@@ -92,6 +92,8 @@
 
     * Template Method Pattern Example
 
+    * Skeletal class implementation
+
     * Java simulated multiple inheritance example
 
     * AbstractMap.SimpleEntry Explanation
@@ -101,8 +103,18 @@
 [Item 21](Chapter_4/Items/Item21.md) (Design interfaces for posterity)
 
     * Java Collections.synchronizedCollection
+    
+    * Java Collections.synchronizedCollection Multi-threaded Access
+    
+    * Java Collections.synchronizedCollection Compound Operations (check-then-act pattern)
 
-    * CopyOnWriteArrayList API
+    * Iterating with Synchronization
+
+    * Synchronized Collection vs Concurrent Collections (CopyOnWriteArrayList)
+
+    * Synchronized Collection with Custom Objects
+
+    * Synchronized Collection Performance Considerations
 
 [Item 22](Chapter_4/Items/Item22.md) (Use interfaces only to define types)
 
