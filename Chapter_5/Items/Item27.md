@@ -1,5 +1,7 @@
 # Eliminate unchecked warnings
 
+# Unchecked warning'leri ortadan kaldırın.
+
 Generic'lerle program yaparken birçok compiler uyarısı göreceksiniz: unchecked cast uyarıları, unchecked method
 invocation uyarıları, unchecked parameterized vararg type uyarıları ve unchecked conversion uyarıları. Generic'lerle ne
 kadar çok deneyim kazanırsanız, o kadar az uyarı alırsınız, ancak yeni yazılan kodun tamamen uyarısız compile edilmesini
