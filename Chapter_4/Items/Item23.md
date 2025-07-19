@@ -1,5 +1,7 @@
 # Prefer class hierarchies to tagged classes
 
+# Class hiyerarşilerini tagged class'lara tercih edin.
+
 Bazen, instance'ları iki veya daha fazla çeşitte olan ve instance'ın çeşidini belirten bir tag field içeren bir sınıfa
 rastlayabilirsiniz. Örneğin, bir circle'i veya rectangle'i represent edebilen bu sınıfı düşünün:
 
