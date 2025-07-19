@@ -1,5 +1,7 @@
 # Favor static member classes over nonstatic
 
+# Nonstatic yerine static member class'ları tercih edin.
+
 Nested class, bir başka sınıfın içinde tanımlanan sınıftır. Nested class, yalnızca kapsayan `(enclosing)` sınıfına
 hizmet etmek için var olmalıdır. Eğer bir nested class başka bir context'de faydalı olacaksa, o zaman `top-level` sınıf
 olmalıdır. Dört tür nested class vardır: `static member class`’lar, `nonstatic member class`’lar, `anonymous class`’lar
