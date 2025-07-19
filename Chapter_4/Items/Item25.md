@@ -1,5 +1,7 @@
 # Limit source files to a single top-level class
 
+# Source file'ları tek bir top-level class ile sınırlayın.
+
 Java compiler, single source file'da multiple `top-level` sınıf tanımlamanıza izin verir; ancak bunun hiçbir avantajı
 yoktur ve önemli riskler taşır. Riskler, bir source file'da multiple `top-level` sınıf tanımlamanın, bir sınıf için
 multiple definition sağlama olanağı vermesinden kaynaklanır. Hangi definition'ın kullanılacağı, source file'larının
