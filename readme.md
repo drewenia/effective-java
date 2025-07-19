@@ -147,3 +147,5 @@
 [Item 33](Chapter_5/Items/Item33.md) (Consider typesafe heterogeneous containers)
 
     * Type Token
+
+[Java Generics Tutorial](JavaGenericsTutorial/JavaGenericsTutorial.md)
