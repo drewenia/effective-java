@@ -1,5 +1,7 @@
 # Don’t use raw types
 
+# Raw Type'ları kullanmayın
+
 Öncelikle birkaç terim: Declaration'ının da bir veya daha fazla type parameter bulunan bir class veya interface, generic
 class veya interface olarak adlandırılır `[JLS, 8.1.2, 9.1.2]`. Örneğin, `List` interface’i, element type’ını represent
 eden tek bir type parameter’a `(E)` sahiptir. Interface’in tam adı `List<E>`’dir (bu, “E tipinden list” şeklinde
