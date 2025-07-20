@@ -148,4 +148,18 @@
 
     * Type Token
 
-[Java Generics Tutorial](JavaGenericsTutorial/JavaGenericsTutorial.md)
+[Oracle Generics Tutorial](OraclaGenericDocumentation/Generics.md)
+
+[Oracle Generics Tutorial - Why Use Generics](OraclaGenericDocumentation/WhyUseGenerics.md)
+
+[Oracle Generics Tutorial - Generic Types](OraclaGenericDocumentation/GenericTypes.md)
+
+[Oracle Generics Tutorial - Raw Types](OraclaGenericDocumentation/RawTypes.md)
+
+[Oracle Generics Tutorial - Generic Methods](OraclaGenericDocumentation/GenericMethods.md)
+
+[Oracle Generics Tutorial - Bounded Type Parameters](OraclaGenericDocumentation/BoundedTypeParameters.md)
+
+[Oracle Generics Tutorial - Generic Methods and Bounded Type Parameters](OraclaGenericDocumentation/GenericMethodsAndBoundedTypeParameters.md)
+
+[Oracle Generics Tutorial - Generics, Inheritance, and Subtypes](OraclaGenericDocumentation/GenericInheritanceAndSubtypes.md)
