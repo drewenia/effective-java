@@ -150,8 +150,8 @@ static int numElementsInCommon(Set s1, Set s2){
 
 Bu metot çalışır, ancak raw type’lar kullandığı için tehlikelidir. Güvenli alternatif ise `unbounded wildcard type`’ları
 kullanmaktır. Bir generic type kullanmak istiyor ancak actual type parametresinin ne olduğunu bilmiyor ya da
-umursamıyorsanız, onun yerine bir soru işareti `(?)` kullanabilirsiniz. Örneğin, `Set<E>` generic type’ı için unbounded
-wildcard type, `Set<?>` şeklindedir (şöyle okunur: “set of some type”). Bu, herhangi bir set’i tutabilen en genel
+umursamıyorsanız, onun yerine bir soru işareti `?` kullanabilirsiniz. Örneğin, Set<`E`> generic type’ı için unbounded
+wildcard type, Set<`?`> şeklindedir (şöyle okunur: “set of some type”). Bu, herhangi bir set’i tutabilen en genel
 parameterized Set type’ıdır.
 
 İşte `numElementsInCommon` metodunun unbounded wildcard type’larla yazılmış hali:
@@ -168,12 +168,12 @@ static int numElementsInCommon(Set<?> s1, Set<?> s2) {
 }
 ```
 
-Unbounded wildcard type `Set<?>` ile raw Set type'ı arasındaki fark nedir. Soru işareti gerçekten size bir avantaj
-sağlar mı `(?)`. Detaya girmemek için, wildcard type safe'dir, raw type ise güvenli değildir. Raw type ile bir
+Unbounded wildcard type Set<`?`> ile raw Set type'ı arasındaki fark nedir. Soru işareti gerçekten size bir avantaj
+sağlar mı `?`. Detaya girmemek için, wildcard type safe'dir, raw type ise güvenli değildir. Raw type ile bir
 collection'a herhangi bir elementi koyabilirsiniz, bu da collection'ın type değişmezini `(invariant)` kolayca bozabilir
 (unsafeAdd methodu ile gösterildiği gibi):
 
-`Collection<?>` içine (null dışında) herhangi bir element koyamazsınız. Bunu yapmaya çalışmak compile time'da
+Collection<`?`> içine (null dışında) herhangi bir element koyamazsınız. Bunu yapmaya çalışmak compile time'da
 aşağıdaki gibi bir hata mesajı oluşturur:
 
 ```
@@ -191,7 +191,7 @@ strings.add("Test"); // => COMPILER ERROR
 ```
 
 Kabul etmek gerekir ki bu hata mesajı pek tatmin edici değildir, ancak compiler görevini yerine getirmiştir; element
-türü ne olursa olsun, collection'ın type değişmezlerinin `(invariant)` bozulmasını engellemiştir. `Collection<?>`
+türü ne olursa olsun, collection'ın type değişmezlerinin `(invariant)` bozulmasını engellemiştir. Collection<`?`>
 içine (null dışında) herhangi bir element koyamayacağınız gibi, içinden aldığınız object'lerin türü hakkında da herhangi
 bir varsayımda bulunamazsınız. Bu kısıtlamalar kabul edilemezse, generic metotlar veya bounded wildcard type'ları
 kullanabilirsiniz.
@@ -199,12 +199,12 @@ kullanabilirsiniz.
 Raw type'ları kullanmamanız gerektiği kuralının birkaç küçük istisnası vardır. Class literal'larında raw type'ları
 kullanmanız gerekir. Spesifikasyon, parameterized type'ların kullanılmasına izin vermez (ancak array type'larına ve
 primitive type'lara izin verir) `[JLS, 15.8.2]`. Başka bir deyişle, `List.class`, `String[].class` ve `int.class` legal
-ifadelerdir, ancak `List<String>.class` ve `List<?>.class` legal değildir.
+ifadelerdir, ancak `List<String>.class` ve List<`?`>.class` legal değildir.
 
 Kuralın ikinci bir istisnası `instanceof` operatörüyle ilgilidir. Generic type information runtime'da silindiği için,
 unbounded wildcard type'lar dışındaki parameterized türlerde `instanceof` operatörünü kullanmak legal değildir. Raw
 type'lar yerine unbounded wildcard type'larının kullanılması, `instanceof` operatörünün davranışını hiçbir şekilde
-etkilemez. Bu case de, açılı parantezler `(<>)` ve soru işaretleri `(<?>)` sadece gürültüdür. Generic türlerle
+etkilemez. Bu case de, açılı parantezler `(<>)` ve soru işaretleri (<`?`>) sadece gürültüdür. Generic türlerle
 `instanceof` operatörünü kullanmanın tercih edilen yolu budur:
 
 ```
@@ -215,11 +215,11 @@ if (o instanceof Set) { // Raw type
 }
 ```
 
-`o`’nun bir `Set` olduğunu belirledikten sonra, onu raw type `Set` yerine wildcard type'ı `Set<?>` olarak dönüştürmeniz
+`o`’nun bir `Set` olduğunu belirledikten sonra, onu raw type `Set` yerine wildcard type'ı Set<`?`> olarak dönüştürmeniz
 gerektiğini unutmayın. Bu, checked bir cast'dir, bu yüzden compiler uyarısına neden olmaz.
 
 Özetle, raw type'ların kullanımı runtime'da exception'lara yol açabilir, bu yüzden onları kullanmayın. Raw type'lar
 yalnızca generic'lerin tanıtılmasından önceki legacy code'lar ile uyumluluk ve birlikte çalışabilirlik sağlamak amacıyla
 sunulmuştur. Hızlı bir özet olarak, `Set<Object>` herhangi bir type'da object içerebilen parameterized bir type'dır,
-`Set<?>` sadece `unknown` bir type'da object içerebilen wildcard type'dır ve `Set` ise generic type sisteminden vazgeçen
+Set<`?`> sadece `unknown` bir type'da object içerebilen wildcard type'dır ve `Set` ise generic type sisteminden vazgeçen
 raw type'dır. İlk ikisi güvenlidir, sonuncusu ise güvenli değildir.

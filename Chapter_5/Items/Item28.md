@@ -68,7 +68,7 @@ oluşturan birinci satır compile-time hatası üretmelidir.
 `E`, `List<E>` ve `List<String>` gibi type'lar teknik olarak `nonreifiable` types olarak bilinir `[JLS, 4.7]`. Sezgisel
 olarak ifade etmek gerekirse, `non-reifiable` bir type, runtime representation'ınının compile-time
 representation'ınından daha az bilgi içerdiği bir typedır. Erasure nedeniyle, `reifiable` olan tek parameterized
-type'lar `List<?>` ve `Map<?,?>` gibi `unbounded wildcard type`'lardır. Unbounded wildcard type'larından array
+type'lar List<`?`> ve Map<`?`,`?`> gibi `unbounded wildcard type`'lardır. Unbounded wildcard type'larından array
 oluşturmak legal'dir, ancak nadiren kullanışlıdır.
 
 Generic array creation yasağı can sıkıcı olabilir. Bu, örneğin, bir generic collection'ın element type'ından bir array

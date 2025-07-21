@@ -4,7 +4,7 @@ Bir variable üzerindeki kısıtlamaları gevşetmek için `upper bounded wildca
 List<Double> ve List<Number> üzerinde çalışan bir method yazmak istiyorsanız; bunu upper bounded wildcard kullanarak
 başarabilirsiniz.
 
-Upper-bounded wildcard'ı declare etmek için wildcard karakteri `('?')`, ardından extends keyword'ü ve son olarak üst
+Upper-bounded wildcard'ı declare etmek için wildcard karakteri `?`, ardından extends keyword'ü ve son olarak üst
 sınırı `(upper bound)` kullanılır. Bu context'de, `extends` terimi genel anlamda ya "extends" (class'larda olduğu gibi)
 ya da "implements" (interface'lerde olduğu gibi) anlamında kullanılır.
 

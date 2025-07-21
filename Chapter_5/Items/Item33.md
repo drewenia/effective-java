@@ -292,7 +292,7 @@ Parametre olan annotationType, bir annotation type'ını represent eden `bounded
 type'da ki annotation’ını döner, varsa; yoksa `null` döner. Özünde, annotated element, key’leri annotation türleri olan
 typesafe heterogeneous container’dır.
 
-Diyelim ki `Class<?>` type'ında bir object'iniz var ve bunu `getAnnotation` gibi bounded type token gerektiren bir
+Diyelim ki Class<`?`> type'ında bir object'iniz var ve bunu `getAnnotation` gibi bounded type token gerektiren bir
 metoda geçirmek istiyorsunuz. Object'i `Class<? extends Annotation>` olarak cast edebilirsiniz, ancak bu cast
 unchecked’tir ve compile time'da warning oluşturur (Item 27). Neyse ki, Class sınıfı bu tür cast’i güvenli (ve dynamic)
 şekilde yapan bir instance method sağlar. Bu method `asSubclass` olarak adlandırılır ve çağrıldığı Class object’ini,

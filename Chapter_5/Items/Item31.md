@@ -283,7 +283,7 @@ Wildcard context'inde extends keyword'ü, hem subclass'ları hem de interface im
 List<? extends Serializable> list = new ArrayList<Integer>();
 ```
 
-`List<?>` ifadesi, `List<? extends Object>` ifadesinin kısaltmasıdır. Bunlar tamamen aynıdır.
+List<`?`> ifadesi, `List<? extends Object>` ifadesinin kısaltmasıdır. Bunlar tamamen aynıdır.
 
 `extends wildcard` ile declare edilmiş bir type'a `null` hariç hiçbir şey ekleyemezsin — null her referans type'a
 aittir:
@@ -655,8 +655,8 @@ where CAP#1 is a fresh type-variable:
 CAP#1 extends Object from capture of ?
 ```
 
-Az önce çıkardığımız bir elementi listeye geri koyamıyor olmamız doğru görünmüyor. Problem, list'in tipi List<?> 
-olması ve List<?> içine `null` dışında hiçbir değer koyamamanızdır. Neyse ki, bu method'u unsafe cast veya raw type
+Az önce çıkardığımız bir elementi listeye geri koyamıyor olmamız doğru görünmüyor. Problem, list'in tipi List<`?`> 
+olması ve List<`?`> içine `null` dışında hiçbir değer koyamamanızdır. Neyse ki, bu method'u unsafe cast veya raw type
 kullanmadan implement etmenin bir yolu var. Fikir, wildcard type'ı capture etmek için private bir helper method
 yazmaktır. Helper method, type'ı capture etmek için generic bir method olmalıdır. İşte nasıl göründüğü:
 
