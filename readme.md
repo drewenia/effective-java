@@ -165,3 +165,9 @@
 [Oracle Generics Tutorial - Generics, Inheritance, and Subtypes](OraclaGenericDocumentation/GenericInheritanceAndSubtypes.md)
 
 [Oracle Generics Tutorial - Type Inference](OraclaGenericDocumentation/TypeInference.md)
+
+[Oracle Generics Tutorial - Wildcards](OraclaGenericDocumentation/Wildcards.md)
+
+[Oracle Generics Tutorial - Upper Bounded Wildcards](OraclaGenericDocumentation/UpperBoundedWildCards.md)
+
+[Oracle Generics Tutorial - Unbounded Wildcards](OraclaGenericDocumentation/UnboundedWildcards.md)
