@@ -163,3 +163,5 @@
 [Oracle Generics Tutorial - Generic Methods and Bounded Type Parameters](OraclaGenericDocumentation/GenericMethodsAndBoundedTypeParameters.md)
 
 [Oracle Generics Tutorial - Generics, Inheritance, and Subtypes](OraclaGenericDocumentation/GenericInheritanceAndSubtypes.md)
+
+[Oracle Generics Tutorial - Type Inference](OraclaGenericDocumentation/TypeInference.md)
