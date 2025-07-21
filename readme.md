@@ -150,24 +150,40 @@
 
 [Oracle Generics Tutorial](OraclaGenericDocumentation/Generics.md)
 
-[Oracle Generics Tutorial - Why Use Generics](OraclaGenericDocumentation/WhyUseGenerics.md)
+* [Why Use Generics](OraclaGenericDocumentation/WhyUseGenerics.md)
 
-[Oracle Generics Tutorial - Generic Types](OraclaGenericDocumentation/GenericTypes.md)
+* [Generic Types](OraclaGenericDocumentation/GenericTypes.md)
 
-[Oracle Generics Tutorial - Raw Types](OraclaGenericDocumentation/RawTypes.md)
+* [Raw Types](OraclaGenericDocumentation/RawTypes.md)
 
-[Oracle Generics Tutorial - Generic Methods](OraclaGenericDocumentation/GenericMethods.md)
+* [Generic Methods](OraclaGenericDocumentation/GenericMethods.md)
 
-[Oracle Generics Tutorial - Bounded Type Parameters](OraclaGenericDocumentation/BoundedTypeParameters.md)
+* [Bounded Type Parameters](OraclaGenericDocumentation/BoundedTypeParameters.md)
 
-[Oracle Generics Tutorial - Generic Methods and Bounded Type Parameters](OraclaGenericDocumentation/GenericMethodsAndBoundedTypeParameters.md)
+* [Generic Methods and Bounded Type Parameters](OraclaGenericDocumentation/GenericMethodsAndBoundedTypeParameters.md)
 
-[Oracle Generics Tutorial - Generics, Inheritance, and Subtypes](OraclaGenericDocumentation/GenericInheritanceAndSubtypes.md)
+* [Generics, Inheritance, and Subtypes](OraclaGenericDocumentation/GenericInheritanceAndSubtypes.md)
 
-[Oracle Generics Tutorial - Type Inference](OraclaGenericDocumentation/TypeInference.md)
+* [Type Inference](OraclaGenericDocumentation/TypeInference.md)
 
-[Oracle Generics Tutorial - Wildcards](OraclaGenericDocumentation/Wildcards.md)
+* [Wildcards](OraclaGenericDocumentation/Wildcards.md)
 
-[Oracle Generics Tutorial - Upper Bounded Wildcards](OraclaGenericDocumentation/UpperBoundedWildCards.md)
+* [Upper Bounded Wildcards](OraclaGenericDocumentation/UpperBoundedWildCards.md)
 
-[Oracle Generics Tutorial - Unbounded Wildcards](OraclaGenericDocumentation/UnboundedWildcards.md)
+* [Unbounded Wildcards](OraclaGenericDocumentation/UnboundedWildcards.md)
+
+* [Lower Bounded Wildcards](OraclaGenericDocumentation/LowerBoundedWildCards.md)
+
+* [Wildcards and Subtyping](OraclaGenericDocumentation/WildCardsAndSubtyping.md)
+
+* [Wildcard Capture and Helper Methods](OraclaGenericDocumentation/WildCardCaptureAndHelperMethods.md)
+
+* [Guidelines for Wildcard Use](OraclaGenericDocumentation/GuidelinesForWildcardUse.md)
+
+* [Type Erasure](OraclaGenericDocumentation/TypeErasure.md)
+
+* [Erasure of Generic Types](OraclaGenericDocumentation/ErasureOfGenericTypes.md)
+
+* [Erasure of Generic Methods](OraclaGenericDocumentation/ErasureOfGenericMethods.md)
+
+* [Effects of Type Erasure and Bridge Methods](OraclaGenericDocumentation/EffectsOfTypeErasureAndBridgeMethods.md)

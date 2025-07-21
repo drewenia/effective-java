@@ -268,7 +268,7 @@ kodunu izlemek için faydalıdır.
 
 Favorites class’ının ikinci sınırlaması, `non-reifiable` type üzerinde kullanılamamasıdır (Item 28). Başka bir deyişle,
 `favorite String` veya `String[]` saklayabilirsiniz, ancak `favorite List<String>` saklayamazsınız. favorite
-List<String> saklamaya çalışırsanız, programınız compile edilmez. Bunun nedeni, `List<String>` için bir Class object
+`List<String>` saklamaya çalışırsanız, programınız compile edilmez. Bunun nedeni, `List<String>` için bir Class object
 alamamanızdır. `List<String>.class` class literal’ı bir syntax error’dur ve bu aslında iyi bir şeydir. `List<String>` ve
 `List<Integer>` tek bir Class object’i paylaşır, bu da `List.class`’tır. “Type literals” `List<String>.class` ve
 `List<Integer>.class` legal ve aynı object referansını döndürseydi, Favorites object'inin internal'ında büyük sorunlar

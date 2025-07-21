@@ -34,7 +34,7 @@ Generic bir class aşağıdaki formatla tanımlanır:
 class name<T1, T2, ..., Tn> { /* ... */ }
 ```
 
-Type parameter bölümü, açılı parantezler (`<>`) ile sınırlanmış olarak, class adını takip eder. Bu bölüm,
+Type parameter bölümü, açılı parantezler `<>` ile sınırlanmış olarak, class adını takip eder. Bu bölüm,
 `T1, T2, ..., Tn` olarak adlandırılan type parameter'ları (type variable'lar) belirtir. Box class'ını generics
 kullanacak şekilde güncellemek için, `public class Box` kodunu `public class Box<T>` olarak değiştirerek generic type
 declaration'ı oluşturursunuz. Bu, class içinde her yerde kullanılabilecek `T` type variable'ını tanımlar.
@@ -114,7 +114,7 @@ Box<Integer> integerBox = new Box<Integer>();
 
 Java SE 7 ve sonrasında, compiler context'den type argument'ları belirleyebildiği `(determine)` veya infer edebildiği
 sürece, generic class'ın constructor'ını çağırmak için gereken type argument'ları empty set (`<>`) ile
-değiştirebilirsiniz. Bu açılı parantez pair'ı (`<>`), gayri resmi olarak `diamond (elmas)` olarak adlandırılır. Örneğin,
+değiştirebilirsiniz. Bu açılı parantez pair'ı `<>`, gayri resmi olarak `diamond (elmas)` olarak adlandırılır. Örneğin,
 aşağıdaki statement ile `Box<Integer>` instance'ı oluşturabilirsiniz:
 
 ```

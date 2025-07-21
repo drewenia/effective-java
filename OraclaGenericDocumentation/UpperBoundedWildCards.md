@@ -1,15 +1,15 @@
 # Upper Bounded Wildcards
 
-Bir variable üzerindeki kısıtlamaları gevşetmek için `upper bounded wildcard` kullanabilirsiniz. Örneğin, List<Integer>,
-List<Double> ve List<Number> üzerinde çalışan bir method yazmak istiyorsanız; bunu upper bounded wildcard kullanarak
-başarabilirsiniz.
+Bir variable üzerindeki kısıtlamaları gevşetmek için `upper bounded wildcard` kullanabilirsiniz. Örneğin,
+`List<Integer>`, `List<Double>` ve `List<Number>` üzerinde çalışan bir method yazmak istiyorsanız; bunu upper bounded
+wildcard kullanarak başarabilirsiniz.
 
 Upper-bounded wildcard'ı declare etmek için wildcard karakteri `?`, ardından extends keyword'ü ve son olarak üst
 sınırı `(upper bound)` kullanılır. Bu context'de, `extends` terimi genel anlamda ya "extends" (class'larda olduğu gibi)
 ya da "implements" (interface'lerde olduğu gibi) anlamında kullanılır.
 
 Number ve onun subtype'lari olan Integer, Double ve Float gibi type'ların listeleri üzerinde çalışan method'u yazmak
-için `List<? extends Number>` belirtirsiniz. List<Number> terimi, sadece Number type'ında ki bir liste ile eşleşirken,
+için `List<? extends Number>` belirtirsiniz. `List<Number>` terimi, sadece Number type'ında ki bir liste ile eşleşirken,
 `List<? extends Number>` terimi Number türündeki veya onun herhangi bir subclass'ına ait liste ile eşleştiği için daha
 kısıtlayıcıdır.
 

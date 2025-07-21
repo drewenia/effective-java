@@ -84,11 +84,11 @@ olmalıydı. Bu gereksinim, migration compatibility olarak bilinir ve raw type�
 `(silme)` kullanarak implementation kararlarını etkiledi.
 
 List gibi raw type’ları kullanmamanız gerekirken, içine herhangi bir Object eklemeye izin veren `List<Object>` gibi
-parameterized type'ları kullanmanız sorun değildir. Raw type List ile parametreli type List<Object> arasındaki fark
+parameterized type'ları kullanmanız sorun değildir. Raw type List ile parametreli type `List<Object>` arasındaki fark
 nedir? Genel olarak, ilki generic type sisteminden çıkmayı seçmişken, ikincisi compiler'a her türden object
-tutabileceğini explicitly belirtir. List<String> type'ında ki bir object'i List type'ında ki bir parametreye
+tutabileceğini explicitly belirtir. `List<String>` type'ında ki bir object'i List type'ında ki bir parametreye
 geçirebilirsiniz, ancak `List<Object>` type'ında ki bir parametreye geçiremezsiniz. Generics için sub-typing kuralları
-vardır ve `List<String>`, raw type List’in subtype'ıdır, ancak parameterized type List<Object>’in subtype'ı değildir.
+vardır ve `List<String>`, raw type List’in subtype'ıdır, ancak parameterized type `List<Object>`’in subtype'ı değildir.
 Bunun sonucu olarak, List gibi raw type’ları kullanırsanız type safety’yi kaybedersiniz, ancak `List<Object>` gibi
 parameterized type'ları kullanırsanız kaybetmezsiniz.
 
@@ -199,12 +199,12 @@ kullanabilirsiniz.
 Raw type'ları kullanmamanız gerektiği kuralının birkaç küçük istisnası vardır. Class literal'larında raw type'ları
 kullanmanız gerekir. Spesifikasyon, parameterized type'ların kullanılmasına izin vermez (ancak array type'larına ve
 primitive type'lara izin verir) `[JLS, 15.8.2]`. Başka bir deyişle, `List.class`, `String[].class` ve `int.class` legal
-ifadelerdir, ancak `List<String>.class` ve List<`?`>.class` legal değildir.
+ifadelerdir, ancak `List<String>.class` ve `List<?>.class` legal değildir.
 
 Kuralın ikinci bir istisnası `instanceof` operatörüyle ilgilidir. Generic type information runtime'da silindiği için,
 unbounded wildcard type'lar dışındaki parameterized türlerde `instanceof` operatörünü kullanmak legal değildir. Raw
 type'lar yerine unbounded wildcard type'larının kullanılması, `instanceof` operatörünün davranışını hiçbir şekilde
-etkilemez. Bu case de, açılı parantezler `(<>)` ve soru işaretleri (<`?`>) sadece gürültüdür. Generic türlerle
+etkilemez. Bu case de, açılı parantezler `<>` ve soru işaretleri <`?`> sadece gürültüdür. Generic türlerle
 `instanceof` operatörünü kullanmanın tercih edilen yolu budur:
 
 ```

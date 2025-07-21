@@ -23,7 +23,7 @@ found: HashSet
 ```
 
 Daha sonra belirtilen düzeltmeyi yapabilir ve uyarının kaybolmasını sağlayabilirsiniz. Type parametresini aslında
-belirtmeniz gerekmez, sadece Java 7 ile gelen diamond operatörü `(<>)` ile type parametresinin var olduğunu göstermeniz
+belirtmeniz gerekmez, sadece Java 7 ile gelen diamond operatörü `<>` ile type parametresinin var olduğunu göstermeniz
 yeterlidir. Compiler daha sonra doğru actual type parametresini `(bu durumda Lark)` infer edecektir:
 
 ```

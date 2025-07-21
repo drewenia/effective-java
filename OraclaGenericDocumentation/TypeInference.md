@@ -95,7 +95,7 @@ addBox(20, listOfIntegerBoxes);
 ## Type Inference and Instantiation of Generic Classes
 
 Generic bir class’ın constructor’ını invoke etmek için gereken type argümanlarını, compiler context'den type
-argümanlarını infer edebildiği sürece, boş bir type parametre kümesi (`<>`) ile değiştirebilirsiniz. Bu çift köşeli
+argümanlarını infer edebildiği sürece, boş bir type parametre kümesi `<>` ile değiştirebilirsiniz. Bu çift köşeli
 parantez gayri resmi olarak `diamond` olarak adlandırılır.
 
 Örneğin, aşağıdaki variable declaration'ı düşünün:
@@ -104,7 +104,7 @@ parantez gayri resmi olarak `diamond` olarak adlandırılır.
 Map<String, List<String>> myMap = new HashMap<String, List<String>>();
 ```
 
-Constructor’ın parameterized türünü boş bir type parametre kümesi (`<>`) ile değiştirebilirsiniz:
+Constructor’ın parameterized türünü boş bir type parametre kümesi `<>` ile değiştirebilirsiniz:
 
 ```
 Map<String, List<String>> myMap = new HashMap<>();
@@ -143,7 +143,7 @@ formal type parametresi `T` içerdiğini unutmayın. Compiler, bu generic class�
 `T` için tür olarak String’i infer eder (çünkü bu constructor’ın actual parametresi bir String object'idir).
 
 Java SE 7 öncesi sürümlerin compiler’ları, generic method’lara benzer şekilde generic constructor’ların actual type
-parametrelerini infer edebilir. Ancak, Java SE 7 ve sonrasındaki compiler’lar, diamond (`<>`) kullanırsanız,
+parametrelerini infer edebilir. Ancak, Java SE 7 ve sonrasındaki compiler’lar, diamond `<>` kullanırsanız,
 instantiated generic class’ın actual type parametrelerini infer edebilir. Aşağıdaki örneği düşünün:
 
 ```

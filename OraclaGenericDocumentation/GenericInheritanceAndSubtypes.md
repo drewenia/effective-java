@@ -41,7 +41,7 @@ olduğunda yaygın bir yanlış anlamadır, ancak öğrenilmesi önemli bir kavr
 
 ![img.png](img.png)
 
-Box<Integer>, Integer Number’ın subtype’ı olmasına rağmen Box<Number>’ın subtype’ı değildir.
+`Box<Integer>`, Integer Number’ın subtype’ı olmasına rağmen `Box<Number>`’ın subtype’ı değildir.
 
 * Note : İki concrete type `A` ve `B` verildiğinde (örneğin Number ve Integer), `MyClass<A>` ile `MyClass<B>` arasında,
   `A` ve `B` ilişkili olsun olmasın, hiçbir ilişki yoktur.
@@ -52,9 +52,10 @@ Generic bir class veya interface’i extend ederek veya implement ederek subtype
 interface’in type parametreleri ile başka bir class veya interface’in type parametreleri arasındaki ilişki, extends ve
 implements ifadeleriyle belirlenir.
 
-Collections class’larını örnek olarak kullanırsak, ArrayList<E> List<E>’yi implement eder ve List<E> Collection<E>’yi
-extends eder. Yani ArrayList<String>, List<String>’in subtype’ıdır ve List<String> de Collection<String>’ın
-subtype’ıdır. Type argümanını değiştirmediğiniz sürece, subtype ilişkisi türler arasında korunur.
+Collections class’larını örnek olarak kullanırsak, `ArrayList<E>` `List<E>`’yi implement eder ve `List<E>`
+`Collection<E>`'yi extends eder. Yani `ArrayList<String>`, `List<String>`’in subtype’ıdır ve `List<String>` de
+`Collection<String>`’ın subtype’ıdır. Type argümanını değiştirmediğiniz sürece, subtype ilişkisi türler arasında
+korunur.
 
 ![img_1.png](img_1.png)
 
@@ -68,7 +69,7 @@ interface PayloadList<E,P> extends List<E> {
 }
 ```
 
-Aşağıdaki PayloadList parameterization’ları, List<String>’in subtype’larıdır:
+Aşağıdaki PayloadList parameterization’ları, `List<String>`’in subtype’larıdır:
 
 ```
 PayloadList<String,String>
