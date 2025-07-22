@@ -187,3 +187,7 @@
 * [Erasure of Generic Methods](OraclaGenericDocumentation/ErasureOfGenericMethods.md)
 
 * [Effects of Type Erasure and Bridge Methods](OraclaGenericDocumentation/EffectsOfTypeErasureAndBridgeMethods.md)
+
+* [Non-Reifiable Types](OraclaGenericDocumentation/NonReifiableTypes.md)
+
+* [Restrictions on Generics](OraclaGenericDocumentation/RestrictionsOnGenerics.md)
