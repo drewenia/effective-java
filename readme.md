@@ -191,3 +191,6 @@
 * [Non-Reifiable Types](OraclaGenericDocumentation/NonReifiableTypes.md)
 
 * [Restrictions on Generics](OraclaGenericDocumentation/RestrictionsOnGenerics.md)
+
+* [Answer to Questions and Exercises: Generics](OraclaGenericDocumentation/AnswertoQuestionsandExercisesGenerics.md)
+

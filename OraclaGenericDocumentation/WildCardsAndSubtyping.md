@@ -28,7 +28,7 @@ List<A> la = lb;   // compile-time error
 
 Integer bir Number subtype'ı olduğuna göre, `List<Integer>` ile `List<Number>` arasında ne tür bir ilişki vardır?
 
-![img_3.png](img_3.png)
+![img_3.png](assets/img_3.png)
 
 Integer bir Number subtype'ı olmasına rağmen, `List<Integer>` `List<Number>`'ın subtype'ı değildir ve aslında bu iki tür
 arasında herhangi bir ilişki yoktur. `List<Number>` ve `List<Integer>`'ın ortak parent'ı List<`?`>'dir.
@@ -45,4 +45,4 @@ Integer bir Number subtype'ı olduğu için ve `numList` Number object'lerinden 
 (Integer object'lerinden oluşan bir liste) ile `numList` arasında artık bir ilişki vardır. Aşağıdaki diyagram, hem upper
 hem de lower bounded wildcard'larla declare edilmiş çeşitli List class'ları arasındaki ilişkileri gösterir.
 
-![img_4.png](img_4.png)
+![img_4.png](assets/img_4.png)

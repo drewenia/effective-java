@@ -39,7 +39,7 @@ Ama bu ne anlama geliyor? Beklediğiniz gibi `Box<Integer>` veya `Box<Double>` g
 çünkü `Box<Integer>` ve `Box<Double>`, `Box<Number>`’ın subtype’ları değildir. Bu, generics ile programlama söz konusu
 olduğunda yaygın bir yanlış anlamadır, ancak öğrenilmesi önemli bir kavramdır.
 
-![img.png](img.png)
+![img.png](assets/img.png)
 
 `Box<Integer>`, Integer Number’ın subtype’ı olmasına rağmen `Box<Number>`’ın subtype’ı değildir.
 
@@ -57,7 +57,7 @@ Collections class’larını örnek olarak kullanırsak, `ArrayList<E>` `List<E>
 `Collection<String>`’ın subtype’ıdır. Type argümanını değiştirmediğiniz sürece, subtype ilişkisi türler arasında
 korunur.
 
-![img_1.png](img_1.png)
+![img_1.png](assets/img_1.png)
 
 Şimdi, her element ile generic türde optional bir `P` değeri ilişkilendiren kendi list interface’imizi, PayloadList’i
 tanımlamak istediğimizi hayal edin. Declaration şöyle görünecektir.
@@ -77,4 +77,4 @@ PayloadList<String,Integer>
 PayloadList<String,Exception>
 ```
 
-![img_2.png](img_2.png)
+![img_2.png](assets/img_2.png)
