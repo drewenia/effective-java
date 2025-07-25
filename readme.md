@@ -147,3 +147,7 @@
 [Item 33](Chapter_5/Items/Item33.md) (Consider typesafe heterogeneous containers)
 
     * Type Token
+
+### [Chapter_6 - Enums and Annotations](Chapter_6/Items/EnumsAndAnnotations.md)
+
+[Item 34](Chapter_6/Items/Items34.md) (Use enums instead of int constants)
