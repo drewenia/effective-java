@@ -155,3 +155,5 @@
 [Item 35](Chapter_6/Items/Items35.md) (Use instance fields instead of ordinals)
 
 [Item 36](Chapter_6/Items/Items36.md) (Use EnumSet instead of bit fields)
+
+[Item 37](Chapter_6/Items/Items37.md) (Use EnumMap instead of ordinal indexing)
