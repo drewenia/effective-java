@@ -148,6 +148,8 @@
 
     * Type Token
 
-### [Chapter_6 - Enums and Annotations](Chapter_6/Items/EnumsAndAnnotations.md)
+### [Chapter 6 - Enums and Annotations](Chapter_6/Items/EnumsAndAnnotations.md)
 
 [Item 34](Chapter_6/Items/Items34.md) (Use enums instead of int constants)
+
+[Item 35](Chapter_6/Items/Items35.md) (Use instance fields instead of ordinals)
