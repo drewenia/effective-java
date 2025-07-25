@@ -153,3 +153,5 @@
 [Item 34](Chapter_6/Items/Items34.md) (Use enums instead of int constants)
 
 [Item 35](Chapter_6/Items/Items35.md) (Use instance fields instead of ordinals)
+
+[Item 36](Chapter_6/Items/Items36.md) (Use EnumSet instead of bit fields)
